@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courses | Horizon Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#f0f9ff",
+                100: "#e0f2fe",
+                200: "#bae6fd",
+                300: "#7dd3fc",
+                400: "#38bdf8",
+                500: "#0ea5e9",
+                600: "#0284c7",
+                700: "#0369a1",
+                800: "#075985",
+                900: "#0c4a6e",
+              },
+              secondary: {
+                50: "#f8fafc",
+                100: "#f1f5f9",
+                200: "#e2e8f0",
+                300: "#cbd5e1",
+                400: "#94a3b8",
+                500: "#64748b",
+                600: "#475569",
+                700: "#334155",
+                800: "#1e293b",
+                900: "#0f172a",
+              },
+            },
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-secondary-50 scroll-animations">
+    <!-- mobile overlay -->
+    <div class="mobile-menu-overlay"></div>
+    <!-- Page Loader -->
+    <div class="loader">
+      <div class="loader-content flex flex-col items-center">
+        <div class="loader-circle"></div>
+        <p class="mt-4 text-primary-600 font-medium">
+          Loading Horizon Education...
+        </p>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav
+      class="navbar fixed w-full z-50 py-4 transition-all duration-300 bg-primary-700/90 backdrop-blur-sm"
+    >
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex justify-between items-center">
+          <a href="/" class="flex items-center space-x-3">
+            <div
+              class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center"
+            >
+              <span class="text-white text-xl font-bold">H</span>
+            </div>
+            <span class="text-2xl font-bold text-white">Horizon</span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="/"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Home</a
+            >
+            <a
+              href="/about"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >About</a
+            >
+            <a
+              href="/courses"
+              class="nav-link text-white hover:text-primary-200 transition font-bold border-b-2 border-white"
+              >Courses</a
+            >
+            <a
+              href="/blog"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Blog</a
+            >
+            <a
+              href="/schedule"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Schedule</a
+            >
+            <a
+              href="/contact"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Contact</a
+            >
+          </div>
+
+          <div class="hidden md:flex items-center space-x-4">
+            <a
+              href="/login"
+              class="px-4 py-2 border border-white text-white rounded-md hover:bg-white hover:text-primary-600 transition duration-300"
+              >Sign In</a
+            >
+            <a
+              href="/register"
+              class="px-4 py-2 bg-primary-500 text-white rounded-md hover:bg-primary-600 transition duration-300"
+              >Register</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-button"
+            class="md:hidden text-white text-2xl focus:outline-none"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden">
+          <div class="flex flex-col py-2">
+            <a
+              href="/"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Home</a
+            >
+            <a
+              href="/about"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >About</a
+            >
+            <a
+              href="/courses"
+              class="px-4 py-3 text-primary-600 bg-primary-50 hover:bg-primary-100 transition font-medium"
+              >Courses</a
+            >
+            <a
+              href="/blog"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Blog</a
+            >
+            <a
+              href="/schedule"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Schedule</a
+            >
+            <a
+              href="/contact"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Contact</a
+            >
+            <div class="border-t border-gray-200 my-2"></div>
+            <a
+              href="/login"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Sign In</a
+            >
+            <a
+              href="/register"
+              class="mx-4 my-2 py-2 bg-primary-500 text-white rounded-md text-center hover:bg-primary-600 transition"
+              >Register</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-16 bg-primary-700 text-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 animate">Explore Our Courses</h1>
+          <p class="text-xl text-primary-100 animate delay-1">Discover a wide range of high-quality courses designed to help you achieve your educational goals.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Search & Filter -->
+    <section class="py-12 bg-white border-b border-secondary-200">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col md:flex-row gap-6 items-center justify-between">
+          <!-- Search Bar -->
+          <div class="w-full md:w-1/3 animate">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="Search for courses..."
+                class="w-full px-4 py-3 pl-12 border border-secondary-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              />
+              <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-secondary-400"></i>
+            </div>
+          </div>
+
+          <!-- Filters -->
+          <div class="flex flex-wrap gap-4 justify-center animate delay-1">
+            <select class="px-4 py-3 border border-secondary-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-secondary-700">
+              <option value="">All Categories</option>
+              <option value="technology">Technology</option>
+              <option value="business">Business</option>
+              <option value="design">Design</option>
+              <option value="marketing">Marketing</option>
+              <option value="health">Health & Wellness</option>
+              <option value="language">Languages</option>
+            </select>
+
+            <select class="px-4 py-3 border border-secondary-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-secondary-700">
+              <option value="">All Levels</option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+
+            <select class="px-4 py-3 border border-secondary-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-secondary-700">
+              <option value="">Sort By</option>
+              <option value="popular">Most Popular</option>
+              <option value="newest">Newest</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Course -->
+    <section class="py-16 bg-secondary-50">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col lg:flex-row gap-12 items-center">
+          <div class="lg:w-1/2 animate">
+            <img 
+              src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" 
+              alt="Advanced Data Science Masterclass" 
+              class="rounded-xl shadow-lg w-full object-cover h-96"
+            />
+          </div>
+          <div class="lg:w-1/2">
+            <div class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4 animate">Featured Course</div>
+            <span class="inline-block px-3 py-1 bg-primary-600 text-white text-sm rounded-full ml-2 animate">Bestseller</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 animate delay-1">Advanced Data Science Masterclass</h2>
+            <div class="flex items-center mb-4 animate delay-1">
+              <div class="flex">
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-star-half-alt text-yellow-400"></i>
+              </div>
+              <span class="ml-2 text-secondary-600">4.8 (2,456 reviews)</span>
+              <span class="mx-2 text-secondary-300">•</span>
+              <span class="text-secondary-600">10,234 students</span>
+            </div>
+            <p class="text-secondary-600 mb-6 animate delay-2">
+              Master the fundamentals and advanced concepts of data science with this comprehensive course. Learn statistical analysis, machine learning, data visualization, and real-world applications through hands-on projects.
+            </p>
+            <div class="flex flex-wrap gap-6 mb-6 animate delay-2">
+              <div class="flex items-center">
+                <i class="fas fa-user-graduate text-primary-600 mr-2"></i>
+                <span class="text-secondary-700">Dr. Michael Richards</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-clock text-primary-600 mr-2"></i>
+                <span class="text-secondary-700">40 hours</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-signal text-primary-600 mr-2"></i>
+                <span class="text-secondary-700">Intermediate to Advanced</span>
+              </div>
+            </div>
+            <div class="flex items-center mb-8 animate delay-3">
+              <span class="text-3xl font-bold text-secondary-900">$129.99</span>
+              <span class="ml-3 line-through text-secondary-500">$199.99</span>
+              <span class="ml-3 bg-primary-100 text-primary-700 px-2 py-1 rounded text-sm font-medium">35% off</span>
+            </div>
+            <div class="flex flex-wrap gap-4 animate delay-3">
+              <a href="/courses/data-science-masterclass" class="px-6 py-3 bg-primary-600 text-white font-semibold rounded-md hover:bg-primary-700 transition duration-300">
+                Enroll Now
+              </a>
+              <a href="/courses/data-science-masterclass/preview" class="px-6 py-3 border border-primary-600 text-primary-600 font-semibold rounded-md hover:bg-primary-50 transition duration-300">
+                Preview Course
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Categories -->
+    <section class="py-12 bg-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-12">
+          <div class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4 animate">
+            Categories
+          </div>
+          <h2 class="text-3xl font-bold text-secondary-900 mb-4 animate delay-1">
+            Browse Courses by Category
+          </h2>
+          <p class="max-w-3xl mx-auto text-secondary-600 animate delay-2">
+            Explore our diverse range of course categories designed to help you acquire new skills and advance your career.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <!-- Category 1 -->
+          <a href="/courses/technology" class="flex flex-col items-center p-6 bg-secondary-50 rounded-xl hover:shadow-lg transition-all duration-300 animate delay-1">
+            <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-4">
+              <i class="fas fa-laptop-code text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-secondary-900 text-center">Technology</h3>
+            <p class="text-sm text-secondary-500 text-center mt-2">42 courses</p>
+          </a>
+
+          <!-- Category 2 -->
+          <a href="/courses/business" class="flex flex-col items-center p-6 bg-secondary-50 rounded-xl hover:shadow-lg transition-all duration-300 animate delay-2">
+            <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-4">
+              <i class="fas fa-chart-line text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-secondary-900 text-center">Business</h3>
+            <p class="text-sm text-secondary-500 text-center mt-2">38 courses</p>
+          </a>
+
+          <!-- Category 3 -->
+          <a href="/courses/design" class="flex flex-col items-center p-6 bg-secondary-50 rounded-xl hover:shadow-lg transition-all duration-300 animate delay-3">
+            <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-4">
+              <i class="fas fa-pencil-ruler text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-secondary-900 text-center">Design</h3>
+            <p class="text-sm text-secondary-500 text-center mt-2">29 courses</p>
+          </a>
+
+          <!-- Category 4 -->
+          <a href="/courses/marketing" class="flex flex-col items-center p-6 bg-secondary-50 rounded-xl hover:shadow-lg transition-all duration-300 animate delay-1">
+            <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-4">
+              <i class="fas fa-bullhorn text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-secondary-900 text-center">Marketing</h3>
+            <p class="text-sm text-secondary-500 text-center mt-2">24 courses</p>
+          </a>
+
+          <!-- Category 5 -->
+          <a href="/courses/health" class="flex flex-col items-center p-6 bg-secondary-50 rounded-xl hover:shadow-lg transition-all duration-300 animate delay-2">
+            <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-4">
+              <i class="fas fa-heartbeat text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-secondary-900 text-center">Health & Wellness</h3>
+            <p class="text-sm text-secondary-500 text-center mt-2">18 courses</p>
+          </a>
+
+          <!-- Category 6 -->
+          <a href="/courses/languages" class="flex flex-col items-center p-6 bg-secondary-50 rounded-xl hover:shadow-lg transition-all duration-300 animate delay-3">
+            <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-4">
+              <i class="fas fa-language text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-secondary-900 text-center">Languages</h3>
+            <p class="text-sm text-secondary-500 text-center mt-2">22 courses</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Courses -->
+    <section class="py-16 bg-secondary-50">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex justify-between items-center mb-12">
+          <div>
+            <div class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4 animate">
+              Most Popular
+            </div>
+            <h2 class="text-3xl font-bold text-secondary-900 animate delay-1">
+              Our Top-Rated Courses
+            </h2>
+          </div>
+          <a href="/courses/all" class="hidden md:inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition animate delay-2">
+            View All Courses
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Course 1 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 animate delay-1">
+            <div class="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1580894742597-87bc8789db3d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
+                alt="Web Development Bootcamp" 
+                class="w-full h-48 object-cover"
+              />
+              <span class="absolute top-4 left-4 bg-primary-600 text-white text-xs font-semibold px-2 py-1 rounded">Bestseller</span>
+              <span class="absolute top-4 right-4 bg-yellow-500 text-white text-xs font-semibold px-2 py-1 rounded">4.9 ★</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-primary-600">Technology</span>
+                <span class="text-sm text-secondary-500">Beginner</span>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                Full-Stack Web Development Bootcamp
+              </h3>
+              <p class="text-secondary-600 mb-4 line-clamp-2">
+                Learn HTML, CSS, JavaScript, React, Node.js, and MongoDB to become a professional web developer from scratch.
+              </p>
+              <div class="flex items-center mb-4">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Instructor" class="w-8 h-8 rounded-full mr-3">
+                <span class="text-sm text-secondary-600">John Doe</span>
+              </div>
+              <div class="flex justify-between items-center pt-4 border-t border-secondary-100">
+                <div>
+                  <span class="text-lg font-bold text-secondary-900">$89.99</span>
+                  <span class="ml-2 text-sm line-through text-secondary-500">$129.99</span>
+                </div>
+                <div class="flex items-center text-secondary-600 text-sm">
+                  <i class="fas fa-users mr-1"></i>
+                  <span>8,245 students</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 2 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 animate delay-2">
+            <div class="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
+                alt="Digital Marketing" 
+                class="w-full h-48 object-cover"
+              />
+              <span class="absolute top-4 right-4 bg-yellow-500 text-white text-xs font-semibold px-2 py-1 rounded">4.7 ★</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-primary-600">Marketing</span>
+                <span class="text-sm text-secondary-500">Intermediate</span>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                Complete Digital Marketing Strategy
+              </h3>
+              <p class="text-secondary-600 mb-4 line-clamp-2">
+                Master SEO, social media, email marketing, PPC, and content marketing to grow your business online.
+              </p>
+              <div class="flex items-center mb-4">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Instructor" class="w-8 h-8 rounded-full mr-3">
+                <span class="text-sm text-secondary-600">Sarah Johnson</span>
+              </div>
+              <div class="flex justify-between items-center pt-4 border-t border-secondary-100">
+                <div>
+                  <span class="text-lg font-bold text-secondary-900">$79.99</span>
+                  <span class="ml-2 text-sm line-through text-secondary-500">$119.99</span>
+                </div>
+                <div class="flex items-center text-secondary-600 text-sm">
+                  <i class="fas fa-users mr-1"></i>
+                  <span>6,128 students</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 3 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 animate delay-3">
+            <div class="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
+                alt="Financial Literacy" 
+                class="w-full h-48 object-cover"
+              />
+              <span class="absolute top-4 left-4 bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded">New</span>
+              <span class="absolute top-4 right-4 bg-yellow-500 text-white text-xs font-semibold px-2 py-1 rounded">4.8 ★</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-primary-600">Business</span>
+                <span class="text-sm text-secondary-500">All Levels</span>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                Personal Finance Mastery
+              </h3>
+              <p class="text-secondary-600 mb-4 line-clamp-2">
+                Learn how to budget, invest, and build wealth with practical strategies for financial independence.
+              </p>
+              <div class="flex items-center mb-4">
+                <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Instructor" class="w-8 h-8 rounded-full mr-3">
+                <span class="text-sm text-secondary-600">Robert Chen</span>
+              </div>
+              <div class="flex justify-between items-center pt-4 border-t border-secondary-100">
+                <div>
+                  <span class="text-lg font-bold text-secondary-900">$69.99</span>
+                  <span class="ml-2 text-sm line-through text-secondary-500">$99.99</span>
+                </div>
+                <div class="flex items-center text-secondary-600 text-sm">
+                  <i class="fas fa-users mr-1"></i>
+                  <span>4,572 students</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 text-center md:hidden animate delay-3">
+          <a href="/courses/all" class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition">
+            View All Courses
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- New Courses -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex justify-between items-center mb-12">
+          <div>
+            <div class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4 animate">
+              Just Added
+            </div>
+            <h2 class="text-3xl font-bold text-secondary-900 animate delay-1">
+              Our Newest Courses
+            </h2>
+          </div>
+          <a href="/courses/new" class="hidden md:inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition animate delay-2">
+            View All New Courses
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Course 1 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 animate delay-1">
+            <div class="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
+                alt="AI Fundamentals" 
+                class="w-full h-48 object-cover"
+              />
+              <span class="absolute top-4 left-4 bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded">New</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-primary-600">Technology</span>
+                <span class="text-sm text-secondary-500">Beginner</span>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                AI & Machine Learning Fundamentals
+              </h3>
+              <p class="text-secondary-600 mb-4 line-clamp-2">
+                Get started with artificial intelligence, machine learning concepts, and practical applications.
+              </p>
+              <div class="flex items-center mb-4">
+                <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Instructor" class="w-8 h-8 rounded-full mr-3">
+                <span class="text-sm text-secondary-600">Amanda Lewis</span>
+              </div>
+              <div class="flex justify-between items-center pt-4 border-t border-secondary-100">
+                <div>
+                  <span class="text-lg font-bold text-secondary-900">$94.99</span>
+                </div>
+                <div class="flex items-center text-secondary-600 text-sm">
+                  <i class="fas fa-users mr-1"></i>
+                  <span>1,245 students</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 2 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 animate delay-2">
+            <div class="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
+                alt="Public Speaking" 
+                class="w-full h-48 object-cover"
+              />
+              <span class="absolute top-4 left-4 bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded">New</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-primary-600">Business</span>
+                <span class="text-sm text-secondary-500">All Levels</span>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                Public Speaking & Presentation Mastery
+              </h3>
+              <p class="text-secondary-600 mb-4 line-clamp-2">
+                Overcome fear, build confidence, and deliver powerful presentations in any setting.
+              </p>
+              <div class="flex items-center mb-4">
+                <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Instructor" class="w-8 h-8 rounded-full mr-3">
+                <span class="text-sm text-secondary-600">Thomas Wright</span>
+              </div>
+              <div class="flex justify-between items-center pt-4 border-t border-secondary-100">
+                <div>
+                  <span class="text-lg font-bold text-secondary-900">$64.99</span>
+                </div>
+                <div class="flex items-center text-secondary-600 text-sm">
+                  <i class="fas fa-users mr-1"></i>
+                  <span>876 students</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 3 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 animate delay-3">
+            <div class="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1551736704-7b752a9e34c2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
+                alt="Mobile Photography" 
+                class="w-full h-48 object-cover"
+              />
+              <span class="absolute top-4 left-4 bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded">New</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-primary-600">Design</span>
+                <span class="text-sm text-secondary-500">Beginner</span>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                Mobile Photography Essentials
+              </h3>
+              <p class="text-secondary-600 mb-4 line-clamp-2">
+                Learn to take professional-quality photos with just your smartphone. Master composition, lighting, and editing.
+              </p>
+              <div class="flex items-center mb-4">
+                <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Instructor" class="w-8 h-8 rounded-full mr-3">
+                <span class="text-sm text-secondary-600">Maria Garcia</span>
+              </div>
+              <div class="flex justify-between items-center pt-4 border-t border-secondary-100">
+                <div>
+                  <span class="text-lg font-bold text-secondary-900">$49.99</span>
+                </div>
+                <div class="flex items-center text-secondary-600 text-sm">
+                  <i class="fas fa-users mr-1"></i>
+                  <span>523 students</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 text-center md:hidden animate delay-3">
+          <a href="/courses/new" class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition">
+            View All New Courses
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Become an Instructor -->
+    <section class="py-20 bg-primary-700 text-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col lg:flex-row items-center">
+          <div class="lg:w-1/2 mb-10 lg:mb-0 animate">
+            <div class="inline-block px-4 py-2 bg-white/20 text-white rounded-full font-medium mb-6">
+              Teach With Us
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+              Become an Instructor
+            </h2>
+            <p class="text-lg text-primary-100 mb-8">
+              Join our community of expert instructors and share your knowledge with students worldwide. Create engaging courses, build your audience, and earn income while making a difference.
+            </p>
+            <div class="flex flex-wrap gap-6 mb-8">
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4">
+                  <i class="fas fa-chalkboard-teacher text-2xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold mb-1">Teach Your Way</h4>
+                  <p class="text-primary-100">Create courses in your own style</p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4">
+                  <i class="fas fa-coins text-2xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold mb-1">Earn Revenue</h4>
+                  <p class="text-primary-100">Get paid for your expertise</p>
+                </div>
+              </div>
+            </div>
+            <a href="/become-instructor" class="inline-block px-8 py-3 bg-white text-primary-700 font-semibold rounded-md hover:bg-primary-50 transition duration-300">
+              Start Teaching Today
+            </a>
+          </div>
+          <div class="lg:w-1/2 lg:pl-16 animate delay-2">
+            <img 
+              src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" 
+              alt="Become an instructor" 
+              class="rounded-xl shadow-lg w-full"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-secondary-50">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-12">
+          <div class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4 animate">
+            Testimonials
+          </div>
+          <h2 class="text-3xl font-bold text-secondary-900 mb-4 animate delay-1">
+            What Our Students Say
+          </h2>
+          <p class="max-w-3xl mx-auto text-secondary-600 animate delay-2">
+            Hear from students who have transformed their lives through our courses.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate delay-1">
+            <div class="flex">
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+            </div>
+            <p class="text-secondary-600 my-6">
+              "The web development bootcamp was exactly what I needed to transition into tech. The instructor was amazing and the curriculum was up-to-date with industry standards. I landed a job just two months after completing the course!"
+            </p>
+            <div class="flex items-center">
+              <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
+              <div>
+                <h4 class="font-semibold text-secondary-900">Jessica Williams</h4>
+                <p class="text-secondary-500 text-sm">Full-Stack Developer</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate delay-2">
+            <div class="flex">
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+            </div>
+            <p class="text-secondary-600 my-6">
+              "The digital marketing course provided practical strategies I could implement immediately. The ROI for my business has been incredible. What sets Horizon apart is the ongoing support and community even after completing the course."
+            </p>
+            <div class="flex items-center">
+              <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
+              <div>
+                <h4 class="font-semibold text-secondary-900">Michael Thompson</h4>
+                <p class="text-secondary-500 text-sm">Small Business Owner</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate delay-3">
+            <div class="flex">
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+            </div>
+            <p class="text-secondary-600 my-6">
+              "The personal finance course changed my relationship with money. The lessons were easy to understand yet comprehensive. I've been able to pay off debt, start investing, and feel confident about my financial future."
+            </p>
+            <div class="flex items-center">
+              <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
+              <div>
+                <h4 class="font-semibold text-secondary-900">Emma Rodriguez</h4>
+                <p class="text-secondary-500 text-sm">Healthcare Professional</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-12">
+          <div class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4 animate">
+            FAQs
+          </div>
+          <h2 class="text-3xl font-bold text-secondary-900 mb-4 animate delay-1">
+            Frequently Asked Questions
+          </h2>
+          <p class="max-w-3xl mx-auto text-secondary-600 animate delay-2">
+            Find answers to common questions about our courses and learning experience.
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto divide-y divide-secondary-200">
+          <!-- FAQ Item 1 -->
+          <div class="py-6 animate delay-1">
+            <h3 class="text-xl font-bold text-secondary-900 mb-3">
+              How long do I have access to a course after purchasing?
+            </h3>
+            <p class="text-secondary-600">
+              Once you purchase a course, you have lifetime access to it. You can revisit the material as many times as you want, and you'll also receive all future updates to the course content.
+            </p>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="py-6 animate delay-2">
+            <h3 class="text-xl font-bold text-secondary-900 mb-3">
+              Are there any prerequisites for taking courses?
+            </h3>
+            <p class="text-secondary-600">
+              Each course has its own prerequisites listed in the course description. Some courses are designed for beginners with no prior experience, while others may require foundational knowledge. Be sure to check the course requirements before enrolling.
+            </p>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="py-6 animate delay-3">
+            <h3 class="text-xl font-bold text-secondary-900 mb-3">
+              Do you offer certificates upon course completion?
+            </h3>
+            <p class="text-secondary-600">
+              Yes, all our courses include a certificate of completion that you can download and share on your professional profiles. Some courses also offer industry-recognized certifications for an additional fee.
+            </p>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="py-6 animate delay-1">
+            <h3 class="text-xl font-bold text-secondary-900 mb-3">
+              What if I'm not satisfied with a course?
+            </h3>
+            <p class="text-secondary-600">
+              We offer a 30-day money-back guarantee for all courses. If you're not satisfied with your purchase, simply contact our support team within 30 days of enrollment, and we'll issue a full refund.
+            </p>
+          </div>
+
+          <!-- FAQ Item 5 -->
+          <div class="py-6 animate delay-2">
+            <h3 class="text-xl font-bold text-secondary-900 mb-3">
+              Can I access courses on mobile devices?
+            </h3>
+            <p class="text-secondary-600">
+              Yes, our learning platform is fully responsive and works on all devices. You can access your courses on desktop, laptop, tablet, or smartphone. We also offer a mobile app for iOS and Android for offline viewing.
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center mt-10 animate delay-3">
+          <p class="text-secondary-600 mb-4">Still have questions?</p>
+          <a href="/contact" class="inline-block px-6 py-3 bg-primary-600 text-white font-semibold rounded-md hover:bg-primary-700 transition duration-300">
+            Contact Our Support Team
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-primary-600 text-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col lg:flex-row items-center justify-between">
+          <div class="mb-8 lg:mb-0 lg:mr-8 animate">
+            <h2 class="text-2xl md:text-3xl font-bold mb-3">
+              Subscribe to Our Newsletter
+            </h2>
+            <p class="text-primary-100">
+              Get the latest updates on courses, events, and educational
+              resources.
+            </p>
+          </div>
+          <div class="lg:w-1/2 animate delay-2">
+            <form class="flex flex-col sm:flex-row space-y-4 sm:space-y-0">
+              <input
+                type="email"
+                placeholder="Your email address"
+                class="px-4 py-3 rounded-l-md sm:rounded-r-none w-full focus:outline-none text-secondary-800"
+              />
+              <button
+                type="submit"
+                class="px-6 py-3 bg-white text-primary-600 font-semibold rounded-r-md sm:rounded-l-none hover:bg-primary-50 transition duration-300"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-900 text-white pt-16 pb-8">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <!-- Company Info -->
+          <div class="animate">
+            <a href="/" class="flex items-center space-x-3 mb-6">
+              <div
+                class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center"
+              >
+                <span class="text-white text-xl font-bold">H</span>
+              </div>
+              <span class="text-2xl font-bold text-white">Horizon</span>
+            </a>
+            <p class="text-secondary-300 mb-6">
+              Transforming education through innovation and personalized
+              learning experiences for students worldwide.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 bg-secondary-800 text-white rounded-full flex items-center justify-center hover:bg-primary-600 transition"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-secondary-800 text-white rounded-full flex items-center justify-center hover:bg-primary-600 transition"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-secondary-800 text-white rounded-full flex items-center justify-center hover:bg-primary-600 transition"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-secondary-800 text-white rounded-full flex items-center justify-center hover:bg-primary-600 transition"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="animate delay-1">
+            <h4 class="text-lg font-semibold mb-6">Quick Links</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="/"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/about"
+                  class="text-secondary-300 hover:text-white transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/courses"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Courses</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/blog"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Blog</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/schedule"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Schedule</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/contact"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div class="animate delay-2">
+            <h4 class="text-lg font-semibold mb-6">Resources</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="/student-portal"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Student Portal</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/calendar"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Course Calendar</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/scholarships"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Scholarships</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/careers"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Career Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/faq"
+                  class="text-secondary-300 hover:text-white transition"
+                  >FAQ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/support"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Help & Support</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="animate delay-3">
+            <h4 class="text-lg font-semibold mb-6">Contact Info</h4>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt text-primary-500 mt-1 mr-3"></i>
+                <span class="text-secondary-300"
+                  >123 Education Avenue, Tech City, CA 90210</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-envelope text-primary-500 mt-1 mr-3"></i>
+                <span class="text-secondary-300"
+                  >info@horizoneducation.com</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-phone text-primary-500 mt-1 mr-3"></i>
+                <span class="text-secondary-300">(123) 456-7890</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-clock text-primary-500 mt-1 mr-3"></i>
+                <span class="text-secondary-300"
+                  >Mon-Fri: 9:00 AM - 5:00 PM</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-secondary-800 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-secondary-400 text-sm mb-4 md:mb-0">
+            &copy; 2025 Horizon Education. All rights reserved.
+          </p>
+          <div class="flex space-x-6">
+            <a
+              href="/privacy"
+              class="text-secondary-400 hover:text-white text-sm transition"
+              >Privacy Policy</a
+            >
+            <a
+              href="/terms"
+              class="text-secondary-400 hover:text-white text-sm transition"
+              >Terms of Service</a
+            >
+            <a
+              href="/cookies"
+              class="text-secondary-400 hover:text-white text-sm transition"
+              >Cookie Policy</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./js/main_script.js"></script>
+  </body>
+</html>

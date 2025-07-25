@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog | Horizon Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#f0f9ff",
+                100: "#e0f2fe",
+                200: "#bae6fd",
+                300: "#7dd3fc",
+                400: "#38bdf8",
+                500: "#0ea5e9",
+                600: "#0284c7",
+                700: "#0369a1",
+                800: "#075985",
+                900: "#0c4a6e",
+              },
+              secondary: {
+                50: "#f8fafc",
+                100: "#f1f5f9",
+                200: "#e2e8f0",
+                300: "#cbd5e1",
+                400: "#94a3b8",
+                500: "#64748b",
+                600: "#475569",
+                700: "#334155",
+                800: "#1e293b",
+                900: "#0f172a",
+              },
+            },
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Fallback for animations */
+      .ensure-visible {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      
+      /* Override any transitions that might cause issues */
+      @media (prefers-reduced-motion: reduce) {
+        .animate {
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-secondary-50">
+    <!-- mobile overlay -->
+    <div class="mobile-menu-overlay"></div>
+    <!-- Page Loader -->
+    <div class="loader">
+      <div class="loader-content flex flex-col items-center">
+        <div class="loader-circle"></div>
+        <p class="mt-4 text-primary-600 font-medium">
+          Loading Horizon Education...
+        </p>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav
+      class="navbar fixed w-full z-50 py-4 transition-all duration-300 bg-primary-700/90 backdrop-blur-sm"
+    >
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex justify-between items-center">
+          <a href="/" class="flex items-center space-x-3">
+            <div
+              class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center"
+            >
+              <span class="text-white text-xl font-bold">H</span>
+            </div>
+            <span class="text-2xl font-bold text-white">Horizon</span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="/"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Home</a
+            >
+            <a
+              href="/about"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >About</a
+            >
+            <a
+              href="/courses"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Courses</a
+            >
+            <a
+              href="/blog"
+              class="nav-link text-white hover:text-primary-200 transition font-bold border-b-2 border-white"
+              >Blog</a
+            >
+            <a
+              href="/schedule"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Schedule</a
+            >
+            <a
+              href="/contact"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Contact</a
+            >
+          </div>
+
+          <div class="hidden md:flex items-center space-x-4">
+            <a
+              href="/login"
+              class="px-4 py-2 border border-white text-white rounded-md hover:bg-white hover:text-primary-600 transition duration-300"
+              >Sign In</a
+            >
+            <a
+              href="/register"
+              class="px-4 py-2 bg-primary-500 text-white rounded-md hover:bg-primary-600 transition duration-300"
+              >Register</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-button"
+            class="md:hidden text-white text-2xl focus:outline-none"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden">
+          <div class="flex flex-col py-2">
+            <a
+              href="/"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Home</a
+            >
+            <a
+              href="/about"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >About</a
+            >
+            <a
+              href="/courses"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Courses</a
+            >
+            <a
+              href="/blog"
+              class="px-4 py-3 text-primary-600 bg-primary-50 hover:bg-primary-100 transition font-medium"
+              >Blog</a
+            >
+            <a
+              href="/schedule"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Schedule</a
+            >
+            <a
+              href="/contact"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Contact</a
+            >
+            <div class="border-t border-gray-200 my-2"></div>
+            <a
+              href="/login"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Sign In</a
+            >
+            <a
+              href="/register"
+              class="mx-4 my-2 py-2 bg-primary-500 text-white rounded-md text-center hover:bg-primary-600 transition"
+              >Register</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-16 bg-primary-700 text-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 ensure-visible">Horizon Education Blog</h1>
+          <p class="text-xl text-primary-100 ensure-visible">Insights, tips, and stories from the world of education and learning</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col lg:flex-row gap-12 items-center">
+          <div class="lg:w-1/2 ensure-visible">
+            <img 
+              src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" 
+              alt="Students working together" 
+              class="rounded-xl shadow-lg w-full"
+            />
+          </div>
+          <div class="lg:w-1/2">
+            <div class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4 ensure-visible">Featured Article</div>
+            <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 ensure-visible">The Future of Education in the Digital Age</h2>
+            <div class="flex items-center mb-4 ensure-visible">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Author" class="w-10 h-10 rounded-full mr-3">
+              <span class="text-secondary-600">By Sophia Rodriguez</span>
+              <span class="mx-2 text-secondary-300">•</span>
+              <span class="text-secondary-600">July 22, 2025</span>
+            </div>
+            <p class="text-secondary-600 mb-6 ensure-visible">
+              The landscape of education is rapidly evolving with the integration of technology. Traditional classrooms are transforming into dynamic learning spaces where digital tools enhance the educational experience...
+            </p>
+            <a href="/blog/future-education-digital-age" class="inline-block px-6 py-3 bg-primary-600 text-white font-semibold rounded-md hover:bg-primary-700 transition duration-300 ensure-visible">
+              Read Full Article
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Categories -->
+    <section class="py-12 bg-secondary-50">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-wrap justify-center gap-4 ensure-visible">
+          <a href="#" class="px-6 py-2 bg-primary-600 text-white rounded-full hover:bg-primary-700 transition">
+            All Topics
+          </a>
+          <a href="#" class="px-6 py-2 bg-secondary-100 text-secondary-800 rounded-full hover:bg-secondary-200 transition">
+            Teaching Methods
+          </a>
+          <a href="#" class="px-6 py-2 bg-secondary-100 text-secondary-800 rounded-full hover:bg-secondary-200 transition">
+            Educational Technology
+          </a>
+          <a href="#" class="px-6 py-2 bg-secondary-100 text-secondary-800 rounded-full hover:bg-secondary-200 transition">
+            Student Success
+          </a>
+          <a href="#" class="px-6 py-2 bg-secondary-100 text-secondary-800 rounded-full hover:bg-secondary-200 transition">
+            Industry Insights
+          </a>
+          <a href="#" class="px-6 py-2 bg-secondary-100 text-secondary-800 rounded-full hover:bg-secondary-200 transition">
+            Learning Tips
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Articles -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-12">
+          <div class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4 ensure-visible">
+            Latest Articles
+          </div>
+          <h2 class="text-3xl font-bold text-secondary-900 mb-4 ensure-visible">
+            Educational Insights & Resources
+          </h2>
+          <p class="max-w-3xl mx-auto text-secondary-600 ensure-visible">
+            Stay updated with our latest articles on education trends, teaching methodologies, and student success stories.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Article 1 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 ensure-visible">
+            <img 
+              src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+              alt="Effective Study Techniques" 
+              class="w-full h-52 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-sm text-secondary-500">July 20, 2025</span>
+                <span class="mx-2 text-secondary-300">•</span>
+                <span class="text-sm text-primary-600">Learning</span>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                Effective Study Techniques for Modern Learners
+              </h3>
+              <p class="text-secondary-600 mb-4">
+                Discover science-backed methods to improve retention and make your study sessions more productive.
+              </p>
+              <a
+                href="/blog/effective-study-techniques"
+                class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition"
+              >
+                Read More
+                <i class="fas fa-arrow-right text-sm ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Article 2 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 ensure-visible">
+            <img 
+              src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+              alt="EdTech Tools" 
+              class="w-full h-52 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-sm text-secondary-500">July 15, 2025</span>
+                <span class="mx-2 text-secondary-300">•</span>
+                <span class="text-sm text-primary-600">Technology</span>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                EdTech Tools That Transform the Learning Experience
+              </h3>
+              <p class="text-secondary-600 mb-4">
+                Explore the latest educational technology tools that are changing how we teach and learn.
+              </p>
+              <a
+                href="/blog/edtech-tools"
+                class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition"
+              >
+                Read More
+                <i class="fas fa-arrow-right text-sm ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Article 3 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 ensure-visible">
+            <img 
+              src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+              alt="Collaborative Learning" 
+              class="w-full h-52 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-sm text-secondary-500">July 10, 2025</span>
+                <span class="mx-2 text-secondary-300">•</span>
+                <span class="text-sm text-primary-600">Education</span>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                The Power of Collaborative Learning Environments
+              </h3>
+              <p class="text-secondary-600 mb-4">
+                Learn how collaborative approaches to education enhance critical thinking and problem-solving skills.
+              </p>
+              <a
+                href="/blog/collaborative-learning"
+                class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition"
+              >
+                Read More
+                <i class="fas fa-arrow-right text-sm ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Article 4 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 ensure-visible">
+            <img 
+              src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+              alt="Inclusive Education" 
+              class="w-full h-52 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-sm text-secondary-500">July 5, 2025</span>
+                <span class="mx-2 text-secondary-300">•</span>
+                <span class="text-sm text-primary-600">Inclusion</span>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                Creating Inclusive Learning Environments for All Students
+              </h3>
+              <p class="text-secondary-600 mb-4">
+                Strategies for making education accessible and effective for students of all backgrounds and abilities.
+              </p>
+              <a
+                href="/blog/inclusive-learning"
+                class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition"
+              >
+                Read More
+                <i class="fas fa-arrow-right text-sm ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Article 5 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 ensure-visible">
+            <img 
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+              alt="Career Development" 
+              class="w-full h-52 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-sm text-secondary-500">June 28, 2025</span>
+                <span class="mx-2 text-secondary-300">•</span>
+                <span class="text-sm text-primary-600">Careers</span>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                Bridging the Gap Between Education and Career Success
+              </h3>
+              <p class="text-secondary-600 mb-4">
+                How educational institutions can better prepare students for the evolving demands of the modern workplace.
+              </p>
+              <a
+                href="/blog/education-career-gap"
+                class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition"
+              >
+                Read More
+                <i class="fas fa-arrow-right text-sm ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Article 6 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 ensure-visible">
+            <img 
+              src="https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+              alt="Mental Health" 
+              class="w-full h-52 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-sm text-secondary-500">June 20, 2025</span>
+                <span class="mx-2 text-secondary-300">•</span>
+                <span class="text-sm text-primary-600">Wellbeing</span>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                Supporting Student Mental Health in Educational Settings
+              </h3>
+              <p class="text-secondary-600 mb-4">
+                Practical approaches for educators to promote mental wellness and resilience among students.
+              </p>
+              <a
+                href="/blog/student-mental-health"
+                class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition"
+              >
+                Read More
+                <i class="fas fa-arrow-right text-sm ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center mt-12 ensure-visible">
+          <nav class="inline-flex rounded-md shadow">
+            <a href="#" class="px-4 py-2 bg-white border border-secondary-300 text-secondary-700 hover:bg-secondary-50 rounded-l-md">
+              Previous
+            </a>
+            <a href="#" class="px-4 py-2 bg-primary-600 text-white border border-primary-600">
+              1
+            </a>
+            <a href="#" class="px-4 py-2 bg-white border border-secondary-300 text-secondary-700 hover:bg-secondary-50">
+              2
+            </a>
+            <a href="#" class="px-4 py-2 bg-white border border-secondary-300 text-secondary-700 hover:bg-secondary-50">
+              3
+            </a>
+            <a href="#" class="px-4 py-2 bg-white border border-secondary-300 text-secondary-700 hover:bg-secondary-50 rounded-r-md">
+              Next
+            </a>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-primary-600 text-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col lg:flex-row items-center justify-between">
+          <div class="mb-8 lg:mb-0 lg:mr-8 ensure-visible">
+            <h2 class="text-2xl md:text-3xl font-bold mb-3">
+              Subscribe to Our Newsletter
+            </h2>
+            <p class="text-primary-100">
+              Get the latest updates on courses, events, and educational
+              resources.
+            </p>
+          </div>
+          <div class="lg:w-1/2 ensure-visible">
+            <form class="flex flex-col sm:flex-row space-y-4 sm:space-y-0">
+              <input
+                type="email"
+                placeholder="Your email address"
+                class="px-4 py-3 rounded-l-md sm:rounded-r-none w-full focus:outline-none text-secondary-800"
+              />
+              <button
+                type="submit"
+                class="px-6 py-3 bg-white text-primary-600 font-semibold rounded-r-md sm:rounded-l-none hover:bg-primary-50 transition duration-300"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-900 text-white pt-16 pb-8">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <!-- Company Info -->
+          <div class="ensure-visible">
+            <a href="/" class="flex items-center space-x-3 mb-6">
+              <div
+                class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center"
+              >
+                <span class="text-white text-xl font-bold">H</span>
+              </div>
+              <span class="text-2xl font-bold text-white">Horizon</span>
+            </a>
+            <p class="text-secondary-300 mb-6">
+              Transforming education through innovation and personalized
+              learning experiences for students worldwide.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 bg-secondary-800 text-white rounded-full flex items-center justify-center hover:bg-primary-600 transition"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-secondary-800 text-white rounded-full flex items-center justify-center hover:bg-primary-600 transition"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-secondary-800 text-white rounded-full flex items-center justify-center hover:bg-primary-600 transition"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-secondary-800 text-white rounded-full flex items-center justify-center hover:bg-primary-600 transition"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="ensure-visible">
+            <h4 class="text-lg font-semibold mb-6">Quick Links</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="/"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/about"
+                  class="text-secondary-300 hover:text-white transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/courses"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Courses</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/blog"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Blog</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/schedule"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Schedule</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/contact"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div class="ensure-visible">
+            <h4 class="text-lg font-semibold mb-6">Resources</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="/student-portal"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Student Portal</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/calendar"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Course Calendar</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/scholarships"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Scholarships</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/careers"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Career Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/faq"
+                  class="text-secondary-300 hover:text-white transition"
+                  >FAQ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/support"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Help & Support</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="ensure-visible">
+            <h4 class="text-lg font-semibold mb-6">Contact Info</h4>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt text-primary-500 mt-1 mr-3"></i>
+                <span class="text-secondary-300"
+                  >123 Education Avenue, Tech City, CA 90210</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-envelope text-primary-500 mt-1 mr-3"></i>
+                <span class="text-secondary-300"
+                  >info@horizoneducation.com</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-phone text-primary-500 mt-1 mr-3"></i>
+                <span class="text-secondary-300">(123) 456-7890</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-clock text-primary-500 mt-1 mr-3"></i>
+                <span class="text-secondary-300"
+                  >Mon-Fri: 9:00 AM - 5:00 PM</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-secondary-800 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-secondary-400 text-sm mb-4 md:mb-0">
+            &copy; 2025 Horizon Education. All rights reserved.
+          </p>
+          <div class="flex space-x-6">
+            <a
+              href="/privacy"
+              class="text-secondary-400 hover:text-white text-sm transition"
+              >Privacy Policy</a
+            >
+            <a
+              href="/terms"
+              class="text-secondary-400 hover:text-white text-sm transition"
+              >Terms of Service</a
+            >
+            <a
+              href="/cookies"
+              class="text-secondary-400 hover:text-white text-sm transition"
+              >Cookie Policy</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Immediately ensure all content is visible
+      document.addEventListener('DOMContentLoaded', function() {
+        // Add active class to all animated elements
+        document.querySelectorAll('.animate').forEach(function(el) {
+          el.classList.add('active');
+        });
+      });
+    </script>
+    <script src="./js/main_script.js"></script>
+  </body>
+</html>

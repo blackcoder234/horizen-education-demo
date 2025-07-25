@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | Horizon Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#f0f9ff",
+                100: "#e0f2fe",
+                200: "#bae6fd",
+                300: "#7dd3fc",
+                400: "#38bdf8",
+                500: "#0ea5e9",
+                600: "#0284c7",
+                700: "#0369a1",
+                800: "#075985",
+                900: "#0c4a6e",
+              },
+              secondary: {
+                50: "#f8fafc",
+                100: "#f1f5f9",
+                200: "#e2e8f0",
+                300: "#cbd5e1",
+                400: "#94a3b8",
+                500: "#64748b",
+                600: "#475569",
+                700: "#334155",
+                800: "#1e293b",
+                900: "#0f172a",
+              },
+            },
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-secondary-50 scroll-animations">
+    <!-- mobile overlay -->
+    <div class="mobile-menu-overlay"></div>
+    <!-- Page Loader -->
+    <div class="loader">
+      <div class="loader-content flex flex-col items-center">
+        <div class="loader-circle"></div>
+        <p class="mt-4 text-primary-600 font-medium">
+          Loading Horizon Education...
+        </p>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav
+      class="navbar fixed w-full z-50 py-4 transition-all duration-300 bg-primary-700/90 backdrop-blur-sm"
+    >
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex justify-between items-center">
+          <a href="/" class="flex items-center space-x-3">
+            <div
+              class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center"
+            >
+              <span class="text-white text-xl font-bold">H</span>
+            </div>
+            <span class="text-2xl font-bold text-white">Horizon</span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="/"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Home</a
+            >
+            <a
+              href="/about"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >About</a
+            >
+            <a
+              href="/courses"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Courses</a
+            >
+            <a
+              href="/blog"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Blog</a
+            >
+            <a
+              href="/schedule"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Schedule</a
+            >
+            <a
+              href="/contact"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Contact</a
+            >
+          </div>
+
+          <div class="hidden md:flex items-center space-x-4">
+            <a
+              href="/login"
+              class="px-4 py-2 border border-white text-white rounded-md hover:bg-white hover:text-primary-600 transition duration-300"
+              >Sign In</a
+            >
+            <a
+              href="/register"
+              class="px-4 py-2 bg-primary-500 text-white rounded-md hover:bg-primary-600 transition duration-300 font-bold"
+              >Register</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-button"
+            class="md:hidden text-white text-2xl focus:outline-none"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden">
+          <div class="flex flex-col py-2">
+            <a
+              href="/"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Home</a
+            >
+            <a
+              href="/about"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >About</a
+            >
+            <a
+              href="/courses"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Courses</a
+            >
+            <a
+              href="/blog"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Blog</a
+            >
+            <a
+              href="/schedule"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Schedule</a
+            >
+            <a
+              href="/contact"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Contact</a
+            >
+            <div class="border-t border-gray-200 my-2"></div>
+            <a
+              href="/login"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Sign In</a
+            >
+            <a
+              href="/register"
+              class="px-4 py-3 text-primary-600 bg-primary-50 hover:bg-primary-100 transition font-medium"
+              >Register</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Registration Section -->
+    <section class="min-h-screen pt-24 pb-16 flex items-center">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="max-w-6xl mx-auto">
+          <div class="flex flex-col lg:flex-row shadow-xl rounded-2xl overflow-hidden">
+            <!-- Left Column - Image -->
+            <div class="lg:w-1/2 relative bg-primary-700 animate">
+              <div class="absolute inset-0 bg-gradient-to-br from-primary-600 to-primary-900 opacity-90"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" 
+                alt="Students collaborating" 
+                class="object-cover w-full h-full opacity-50"
+              />
+              <div class="absolute inset-0 flex flex-col justify-center items-center text-white p-8 md:p-12 z-10">
+                <div class="max-w-md text-center">
+                  <h2 class="text-3xl md:text-4xl font-bold mb-4">Join Our Learning Community</h2>
+                  <p class="text-primary-100 mb-8">Create an account to access our premium courses, track your progress, and connect with instructors and fellow learners.</p>
+                  
+                  <div class="flex justify-center space-x-6 mb-10">
+                    <div class="text-center">
+                      <div class="text-3xl font-bold mb-2">24/7</div>
+                      <div class="text-primary-200 text-sm">Support</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="text-3xl font-bold mb-2">Free</div>
+                      <div class="text-primary-200 text-sm">Trial Period</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="text-3xl font-bold mb-2">Flexible</div>
+                      <div class="text-primary-200 text-sm">Learning Paths</div>
+                    </div>
+                  </div>
+                  
+                  <div class="hidden md:block">
+                    <p class="text-sm text-primary-200 mb-4">Already have an account?</p>
+                    <a href="/login" class="inline-block px-6 py-2.5 border border-white text-white rounded-md hover:bg-white hover:text-primary-600 transition duration-300">
+                      Sign In Instead
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column - Registration Form -->
+            <div class="lg:w-1/2 bg-white p-8 md:p-12 flex flex-col justify-center animate delay-1">
+              <div class="max-w-md mx-auto w-full">
+                <div class="text-center mb-8">
+                  <h1 class="text-2xl font-bold text-secondary-900">Create Your Account</h1>
+                  <p class="text-secondary-600 mt-2">Start your educational journey with Horizon</p>
+                </div>
+
+                <!-- Social Registration Options -->
+                <div class="flex flex-col sm:flex-row gap-3 mb-6">
+                  <button class="flex-1 flex items-center justify-center gap-2 border border-secondary-300 rounded-md py-2.5 hover:bg-secondary-50 transition duration-300">
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
+                      <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" fill="#4285f4"/>
+                    </svg>
+                    <span>Google</span>
+                  </button>
+                  <button class="flex-1 flex items-center justify-center gap-2 border border-secondary-300 rounded-md py-2.5 hover:bg-secondary-50 transition duration-300">
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                      <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" fill="#1DA1F2"/>
+                    </svg>
+                    <span>Twitter</span>
+                  </button>
+                </div>
+
+                <div class="relative flex items-center justify-center mb-6">
+                  <div class="border-t border-secondary-200 flex-grow"></div>
+                  <span class="mx-4 text-secondary-500 text-sm">OR</span>
+                  <div class="border-t border-secondary-200 flex-grow"></div>
+                </div>
+
+                <!-- Registration Form -->
+                <form class="space-y-5">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                      <label for="firstName" class="block text-sm font-medium text-secondary-700 mb-1">First Name</label>
+                      <input 
+                        type="text" 
+                        id="firstName" 
+                        class="input-focus block w-full px-3 py-2.5 border border-secondary-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500"
+                        placeholder="John"
+                      />
+                    </div>
+                    <div>
+                      <label for="lastName" class="block text-sm font-medium text-secondary-700 mb-1">Last Name</label>
+                      <input 
+                        type="text" 
+                        id="lastName" 
+                        class="input-focus block w-full px-3 py-2.5 border border-secondary-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500"
+                        placeholder="Doe"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label for="email" class="block text-sm font-medium text-secondary-700 mb-1">Email Address</label>
+                    <div class="relative">
+                      <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-envelope text-secondary-400"></i>
+                      </div>
+                      <input 
+                        type="email" 
+                        id="email" 
+                        class="input-focus block w-full pl-10 pr-3 py-2.5 border border-secondary-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500"
+                        placeholder="name@example.com"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label for="password" class="block text-sm font-medium text-secondary-700 mb-1">Password</label>
+                    <div class="relative">
+                      <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-lock text-secondary-400"></i>
+                      </div>
+                      <input 
+                        type="password" 
+                        id="password" 
+                        class="input-focus block w-full pl-10 pr-10 py-2.5 border border-secondary-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500"
+                        placeholder="••••••••"
+                      />
+                      <button 
+                        type="button" 
+                        class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                        onclick="togglePasswordVisibility('password', 'eyeIcon')"
+                      >
+                        <i id="eyeIcon" class="fas fa-eye text-secondary-400"></i>
+                      </button>
+                    </div>
+                    <p class="mt-1 text-xs text-secondary-500">Must be at least 8 characters with 1 uppercase, 1 number and 1 special character</p>
+                  </div>
+                  
+                  <div>
+                    <label for="confirmPassword" class="block text-sm font-medium text-secondary-700 mb-1">Confirm Password</label>
+                    <div class="relative">
+                      <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-lock text-secondary-400"></i>
+                      </div>
+                      <input 
+                        type="password" 
+                        id="confirmPassword" 
+                        class="input-focus block w-full pl-10 pr-10 py-2.5 border border-secondary-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500"
+                        placeholder="••••••••"
+                      />
+                      <button 
+                        type="button" 
+                        class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                        onclick="togglePasswordVisibility('confirmPassword', 'confirmEyeIcon')"
+                      >
+                        <i id="confirmEyeIcon" class="fas fa-eye text-secondary-400"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label for="accountType" class="block text-sm font-medium text-secondary-700 mb-1">I am a</label>
+                    <select 
+                      id="accountType" 
+                      class="input-focus block w-full px-3 py-2.5 border border-secondary-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500"
+                    >
+                      <option value="" disabled selected>Select account type</option>
+                      <option value="student">Student</option>
+                      <option value="teacher">Teacher</option>
+                      <option value="parent">Parent</option>
+                      <option value="institution">Educational Institution</option>
+                    </select>
+                  </div>
+                  
+                  <div class="flex items-start">
+                    <input 
+                      type="checkbox" 
+                      id="terms" 
+                      class="h-4 w-4 mt-1 text-primary-600 border-secondary-300 rounded focus:ring-primary-500"
+                    />
+                    <label for="terms" class="ml-2 block text-sm text-secondary-700">
+                      I agree to the <a href="/terms" class="text-primary-600 hover:text-primary-500">Terms of Service</a> and <a href="/privacy" class="text-primary-600 hover:text-primary-500">Privacy Policy</a>
+                    </label>
+                  </div>
+                  
+                  <div class="flex items-start">
+                    <input 
+                      type="checkbox" 
+                      id="newsletter" 
+                      class="h-4 w-4 mt-1 text-primary-600 border-secondary-300 rounded focus:ring-primary-500"
+                    />
+                    <label for="newsletter" class="ml-2 block text-sm text-secondary-700">
+                      I would like to receive emails about new courses, promotions, and educational resources
+                    </label>
+                  </div>
+                  
+                  <button 
+                    type="submit" 
+                    class="w-full py-3 px-4 bg-primary-600 text-white font-medium rounded-md shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-300"
+                  >
+                    Create Account
+                  </button>
+                </form>
+
+                <!-- Mobile Login Link -->
+                <div class="text-center mt-8 md:hidden">
+                  <p class="text-sm text-secondary-600 mb-2">Already have an account?</p>
+                  <a href="/login" class="text-primary-600 font-medium hover:text-primary-500">
+                    Sign In Instead
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 border-t border-secondary-200">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="flex items-center mb-4 md:mb-0">
+            <a href="/" class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+                <span class="text-white text-lg font-bold">H</span>
+              </div>
+              <span class="text-xl font-bold text-secondary-900">Horizon</span>
+            </a>
+          </div>
+          <div class="flex flex-wrap justify-center space-x-6">
+            <a href="/privacy" class="text-secondary-600 hover:text-primary-600 text-sm">Privacy Policy</a>
+            <a href="/terms" class="text-secondary-600 hover:text-primary-600 text-sm">Terms of Service</a>
+            <a href="/cookies" class="text-secondary-600 hover:text-primary-600 text-sm">Cookie Policy</a>
+            <a href="/help" class="text-secondary-600 hover:text-primary-600 text-sm">Help Center</a>
+          </div>
+          <div class="mt-4 md:mt-0">
+            <p class="text-sm text-secondary-500">&copy; 2025 Horizon Education. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Toggle password visibility
+      function togglePasswordVisibility(inputId, iconId) {
+        const passwordInput = document.getElementById(inputId);
+        const eyeIcon = document.getElementById(iconId);
+        
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          eyeIcon.classList.remove('fa-eye');
+          eyeIcon.classList.add('fa-eye-slash');
+        } else {
+          passwordInput.type = 'password';
+          eyeIcon.classList.remove('fa-eye-slash');
+          eyeIcon.classList.add('fa-eye');
+        }
+      }
+    </script>
+    <script src="./js/main_script.js"></script>
+  </body>
+</html>

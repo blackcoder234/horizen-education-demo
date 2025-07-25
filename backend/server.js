@@ -3,10 +3,6 @@
 const express = require("express");
 const path = require("path");
 
-const session = require("express-session");
-const mongoose = require("mongoose");
-const cors = require("cors");
-
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -16,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files
-const staticPath = path.join(__dirname, "./frontend");
+const staticPath = path.join(__dirname, "../frontend");
 app.use(express.static(staticPath));
 
 
@@ -48,16 +44,16 @@ app.get("/about", (req, res) => {
     });
 });
 
-app.get("/service", (req, res) => {
-    res.sendFile(path.join(staticPath, "service.html"), (err) => {
+app.get("/courses", (req, res) => {
+    res.sendFile(path.join(staticPath, "course.html"), (err) => {
         if (err) {
             res.status(500).send("Error loading Page");
         }
     });
 });
 
-app.get("/work", (req, res) => {
-    res.sendFile(path.join(staticPath, "work.html"), (err) => {
+app.get("/blog", (req, res) => {
+    res.sendFile(path.join(staticPath, "blog.html"), (err) => {
         if (err) {
             res.status(500).send("Error loading Page");
         }
@@ -88,7 +84,7 @@ app.get("/login", (req, res) => {
     });
 });
 
-app.get("/signup", (req, res) => {
+app.get("/register", (req, res) => {
     res.sendFile(path.join(staticPath, "signup.html"), (err) => {
         if (err) {
             res.status(500).send("Error loading Page");

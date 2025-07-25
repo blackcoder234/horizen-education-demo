@@ -79,6 +79,7 @@ function animateCounters() {
 }
 
 // Hide loader when page is loaded
+
 window.addEventListener('load', function () {
     const loader = document.querySelector('.loader');
     setTimeout(function () {
@@ -89,19 +90,28 @@ window.addEventListener('load', function () {
     animateOnScroll();
 
     // Start counter animations when statistics section is in view
-    const statsSection = document.querySelector('.counter').closest('section');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounters();
-                observer.unobserve(entry.target);
-            }
+    const counterElement = document.querySelector('.counter');
+    if (counterElement) { // Check if counter exists before proceeding
+        const statsSection = counterElement.closest('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(statsSection);
+    }
+    
+    // Add this to force all animations to show even if there was an error
+    setTimeout(function() {
+        document.querySelectorAll('.animate').forEach(el => {
+            el.classList.add('active');
         });
-    }, { threshold: 0.5 });
-
-    observer.observe(statsSection);
+    }, 1000);
 });
-
 // Listen for scroll events to trigger animations
 window.addEventListener('scroll', animateOnScroll);
 

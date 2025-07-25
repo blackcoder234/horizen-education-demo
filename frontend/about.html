@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | Horizon Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#f0f9ff",
+                100: "#e0f2fe",
+                200: "#bae6fd",
+                300: "#7dd3fc",
+                400: "#38bdf8",
+                500: "#0ea5e9",
+                600: "#0284c7",
+                700: "#0369a1",
+                800: "#075985",
+                900: "#0c4a6e",
+              },
+              secondary: {
+                50: "#f8fafc",
+                100: "#f1f5f9",
+                200: "#e2e8f0",
+                300: "#cbd5e1",
+                400: "#94a3b8",
+                500: "#64748b",
+                600: "#475569",
+                700: "#334155",
+                800: "#1e293b",
+                900: "#0f172a",
+              },
+            },
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-secondary-50 scroll-animations">
+    <!-- mobile overlay -->
+    <div class="mobile-menu-overlay"></div>
+    <!-- Page Loader -->
+    <div class="loader">
+      <div class="loader-content flex flex-col items-center">
+        <div class="loader-circle"></div>
+        <p class="mt-4 text-primary-600 font-medium">
+          Loading Horizon Education...
+        </p>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav
+      class="navbar fixed w-full z-50 py-4 transition-all duration-300 bg-primary-700/90 backdrop-blur-sm"
+    >
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex justify-between items-center">
+          <a href="/" class="flex items-center space-x-3">
+            <div
+              class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center"
+            >
+              <span class="text-white text-xl font-bold">H</span>
+            </div>
+            <span class="text-2xl font-bold text-white">Horizon</span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="/"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Home</a
+            >
+            <a
+              href="/about"
+              class="nav-link text-white hover:text-primary-200 transition font-bold border-b-2 border-white"
+              >About</a
+            >
+            <a
+              href="/courses"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Courses</a
+            >
+            <a
+              href="/blog"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Blog</a
+            >
+            <a
+              href="/schedule"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Schedule</a
+            >
+            <a
+              href="/contact"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Contact</a
+            >
+          </div>
+
+          <div class="hidden md:flex items-center space-x-4">
+            <a
+              href="/login"
+              class="px-4 py-2 border border-white text-white rounded-md hover:bg-white hover:text-primary-600 transition duration-300"
+              >Sign In</a
+            >
+            <a
+              href="/register"
+              class="px-4 py-2 bg-primary-500 text-white rounded-md hover:bg-primary-600 transition duration-300"
+              >Register</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-button"
+            class="md:hidden text-white text-2xl focus:outline-none"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden">
+          <div class="flex flex-col py-2">
+            <a
+              href="/"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Home</a
+            >
+            <a
+              href="/about"
+              class="px-4 py-3 text-primary-600 bg-primary-50 hover:bg-primary-100 transition font-medium"
+              >About</a
+            >
+            <a
+              href="/courses"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Courses</a
+            >
+            <a
+              href="/blog"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Blog</a
+            >
+            <a
+              href="/schedule"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Schedule</a
+            >
+            <a
+              href="/contact"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Contact</a
+            >
+            <div class="border-t border-gray-200 my-2"></div>
+            <a
+              href="/login"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Sign In</a
+            >
+            <a
+              href="/register"
+              class="mx-4 my-2 py-2 bg-primary-500 text-white rounded-md text-center hover:bg-primary-600 transition"
+              >Register</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-16 bg-primary-700 text-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 animate">
+            About Horizon Education
+          </h1>
+          <p class="text-xl text-primary-100 animate delay-1">
+            Discover our story, mission, and the passionate team behind our
+            educational innovation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="lg:w-1/2 animate">
+            <img
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
+              alt="Horizon Education founding team"
+              class="rounded-xl shadow-lg w-full"
+            />
+          </div>
+          <div class="lg:w-1/2">
+            <div
+              class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-6 animate"
+            >
+              Our Story
+            </div>
+            <h2
+              class="text-3xl md:text-4xl font-bold text-secondary-900 mb-6 animate delay-1"
+            >
+              From Vision to Reality
+            </h2>
+            <p class="text-secondary-600 mb-6 animate delay-2">
+              Founded in 2015 by a group of passionate educators and technology
+              experts, Horizon Education was born from a simple vision: to
+              transform traditional education by making it more accessible,
+              engaging, and effective.
+            </p>
+            <p class="text-secondary-600 mb-6 animate delay-3">
+              What began as a small startup with just five team members and two
+              online courses has now grown into a global education platform
+              serving over 10,000 students across 30 countries, with a faculty
+              of 50+ expert instructors and 100+ courses.
+            </p>
+            <p class="text-secondary-600 animate delay-4">
+              Throughout our journey, we've remained committed to our founding
+              principles: innovation in teaching methodologies, personalization
+              of learning experiences, and fostering a supportive community that
+              empowers students to achieve their full potential.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Values Section -->
+    <section class="py-20 bg-secondary-50">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-16">
+          <div
+            class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4 animate"
+          >
+            Our Purpose
+          </div>
+          <h2
+            class="text-3xl md:text-4xl font-bold text-secondary-900 mb-6 animate delay-1"
+          >
+            Mission & Values
+          </h2>
+          <p class="text-secondary-600 text-lg animate delay-2">
+            At Horizon Education, we're guided by a clear mission and a set of
+            core values that shape everything we do.
+          </p>
+        </div>
+
+        <div class="mb-20">
+          <div class="bg-white p-8 rounded-xl shadow-lg animate">
+            <h3 class="text-2xl font-bold text-secondary-900 mb-4 text-center">
+              Our Mission
+            </h3>
+            <p class="text-secondary-600 text-lg text-center max-w-3xl mx-auto">
+              To democratize education by providing high-quality, accessible
+              learning experiences that empower individuals to transform their
+              lives and make a positive impact on the world.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Value 1 -->
+          <div
+            class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate delay-1"
+          >
+            <div
+              class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-6 mx-auto"
+            >
+              <i class="fas fa-lightbulb text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-secondary-900 mb-3 text-center">
+              Innovation
+            </h3>
+            <p class="text-secondary-600 text-center">
+              We constantly seek new ways to improve the learning experience,
+              embracing technology and research to stay at the forefront of
+              educational excellence.
+            </p>
+          </div>
+
+          <!-- Value 2 -->
+          <div
+            class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate delay-2"
+          >
+            <div
+              class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-6 mx-auto"
+            >
+              <i class="fas fa-users text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-secondary-900 mb-3 text-center">
+              Inclusivity
+            </h3>
+            <p class="text-secondary-600 text-center">
+              We believe education is a right, not a privilege. We strive to
+              create learning environments where everyone feels welcome,
+              respected, and valued.
+            </p>
+          </div>
+
+          <!-- Value 3 -->
+          <div
+            class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate delay-3"
+          >
+            <div
+              class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-6 mx-auto"
+            >
+              <i class="fas fa-medal text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-secondary-900 mb-3 text-center">
+              Excellence
+            </h3>
+            <p class="text-secondary-600 text-center">
+              We maintain the highest standards in our curriculum development,
+              instructor selection, and student support services.
+            </p>
+          </div>
+
+          <!-- Value 4 -->
+          <div
+            class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate delay-1"
+          >
+            <div
+              class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-6 mx-auto"
+            >
+              <i class="fas fa-handshake text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-secondary-900 mb-3 text-center">
+              Collaboration
+            </h3>
+            <p class="text-secondary-600 text-center">
+              We foster environments where students and instructors learn from
+              each other, solving problems together and building community.
+            </p>
+          </div>
+
+          <!-- Value 5 -->
+          <div
+            class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate delay-2"
+          >
+            <div
+              class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-6 mx-auto"
+            >
+              <i class="fas fa-heart text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-secondary-900 mb-3 text-center">
+              Student-Centered
+            </h3>
+            <p class="text-secondary-600 text-center">
+              Our students are at the heart of everything we do. We design our
+              programs around their needs, goals, and learning styles.
+            </p>
+          </div>
+
+          <!-- Value 6 -->
+          <div
+            class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate delay-3"
+          >
+            <div
+              class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-6 mx-auto"
+            >
+              <i class="fas fa-seedling text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-secondary-900 mb-3 text-center">
+              Continuous Growth
+            </h3>
+            <p class="text-secondary-600 text-center">
+              We believe learning is a lifelong journey. We encourage our
+              students and team members to continuously develop their skills and
+              knowledge.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+          <div
+            class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4 animate"
+          >
+            Our People
+          </div>
+          <h2
+            class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 animate delay-1"
+          >
+            Meet Our Leadership Team
+          </h2>
+          <p
+            class="max-w-3xl mx-auto text-secondary-600 text-lg animate delay-2"
+          >
+            The passionate individuals behind Horizon Education who drive our
+            mission forward every day.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Team Member 1 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 animate delay-1"
+          >
+            <img
+              src="https://randomuser.me/api/portraits/men/32.jpg"
+              alt="Michael Richardson"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-secondary-900 mb-1">
+                Michael Richardson
+              </h3>
+              <p class="text-primary-600 font-medium mb-4">Founder & CEO</p>
+              <p class="text-secondary-600 mb-5">
+                Former university professor with a passion for making education
+                accessible to all. Michael founded Horizon Education with a
+                vision to transform how we learn.
+              </p>
+              <div class="flex space-x-3">
+                <a
+                  href="#"
+                  class="text-secondary-400 hover:text-primary-600 transition"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-secondary-400 hover:text-primary-600 transition"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 2 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 animate delay-2"
+          >
+            <img
+              src="https://randomuser.me/api/portraits/women/44.jpg"
+              alt="Sophia Rodriguez"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-secondary-900 mb-1">
+                Sophia Rodriguez
+              </h3>
+              <p class="text-primary-600 font-medium mb-4">
+                Chief Academic Officer
+              </p>
+              <p class="text-secondary-600 mb-5">
+                With 15 years in curriculum development, Sophia ensures our
+                courses meet the highest educational standards while remaining
+                engaging and practical.
+              </p>
+              <div class="flex space-x-3">
+                <a
+                  href="#"
+                  class="text-secondary-400 hover:text-primary-600 transition"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-secondary-400 hover:text-primary-600 transition"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 animate delay-3"
+          >
+            <img
+              src="https://randomuser.me/api/portraits/men/68.jpg"
+              alt="David Chen"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-secondary-900 mb-1">
+                David Chen
+              </h3>
+              <p class="text-primary-600 font-medium mb-4">CTO</p>
+              <p class="text-secondary-600 mb-5">
+                A tech innovator who leads our engineering team in developing
+                the platform that powers our interactive learning experiences.
+              </p>
+              <div class="flex space-x-3">
+                <a
+                  href="#"
+                  class="text-secondary-400 hover:text-primary-600 transition"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-secondary-400 hover:text-primary-600 transition"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 4 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 animate delay-1"
+          >
+            <img
+              src="https://randomuser.me/api/portraits/women/68.jpg"
+              alt="Emily Watson"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-secondary-900 mb-1">
+                Emily Watson
+              </h3>
+              <p class="text-primary-600 font-medium mb-4">
+                Head of Student Experience
+              </p>
+              <p class="text-secondary-600 mb-5">
+                Emily ensures that every student receives personalized support
+                throughout their learning journey with Horizon Education.
+              </p>
+              <div class="flex space-x-3">
+                <a
+                  href="#"
+                  class="text-secondary-400 hover:text-primary-600 transition"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-secondary-400 hover:text-primary-600 transition"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 5 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 animate delay-2"
+          >
+            <img
+              src="https://randomuser.me/api/portraits/men/54.jpg"
+              alt="Robert Taylor"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-secondary-900 mb-1">
+                Robert Taylor
+              </h3>
+              <p class="text-primary-600 font-medium mb-4">
+                Chief Financial Officer
+              </p>
+              <p class="text-secondary-600 mb-5">
+                Robert oversees our financial strategy, ensuring we can provide
+                quality education at affordable prices while maintaining
+                sustainable growth.
+              </p>
+              <div class="flex space-x-3">
+                <a
+                  href="#"
+                  class="text-secondary-400 hover:text-primary-600 transition"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-secondary-400 hover:text-primary-600 transition"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 6 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 animate delay-3"
+          >
+            <img
+              src="https://randomuser.me/api/portraits/women/63.jpg"
+              alt="Priya Sharma"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-secondary-900 mb-1">
+                Priya Sharma
+              </h3>
+              <p class="text-primary-600 font-medium mb-4">
+                Global Partnerships Director
+              </p>
+              <p class="text-secondary-600 mb-5">
+                Priya builds relationships with educational institutions and
+                industry partners to expand our global reach and enhance our
+                offerings.
+              </p>
+              <div class="flex space-x-3">
+                <a
+                  href="#"
+                  class="text-secondary-400 hover:text-primary-600 transition"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-secondary-400 hover:text-primary-600 transition"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recognition Section -->
+    <section class="py-20 bg-secondary-50">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+          <div
+            class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4 animate"
+          >
+            Recognition
+          </div>
+          <h2
+            class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 animate delay-1"
+          >
+            Awards & Accolades
+          </h2>
+          <p
+            class="max-w-3xl mx-auto text-secondary-600 text-lg animate delay-2"
+          >
+            We're honored to be recognized for our contributions to educational
+            innovation and excellence.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Award 1 -->
+          <div
+            class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate delay-1"
+          >
+            <div
+              class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-trophy text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-secondary-900 mb-2">
+              EdTech Breakthrough Award
+            </h3>
+            <p class="text-secondary-500 mb-4">2024</p>
+            <p class="text-secondary-600">
+              Recognized as "Learning Platform of the Year" for our innovative
+              approach to online education.
+            </p>
+          </div>
+
+          <!-- Award 2 -->
+          <div
+            class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate delay-2"
+          >
+            <div
+              class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-award text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-secondary-900 mb-2">
+              Global Education Excellence
+            </h3>
+            <p class="text-secondary-500 mb-4">2023</p>
+            <p class="text-secondary-600">
+              Awarded for our commitment to making quality education accessible
+              globally.
+            </p>
+          </div>
+
+          <!-- Award 3 -->
+          <div
+            class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate delay-3"
+          >
+            <div
+              class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-star text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-secondary-900 mb-2">
+              Best Online Learning Experience
+            </h3>
+            <p class="text-secondary-500 mb-4">2022</p>
+            <p class="text-secondary-600">
+              Voted by students for providing the most engaging and effective
+              online courses.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Join Our Team -->
+    <section class="py-20 bg-primary-700 text-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+          <div
+            class="inline-block px-4 py-2 bg-white/20 text-white rounded-full font-medium mb-6 animate"
+          >
+            Careers
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6 animate delay-1">
+            Join Our Team
+          </h2>
+          <p class="text-xl text-primary-100 mb-8 animate delay-2">
+            We're always looking for passionate individuals who share our
+            mission to transform education. Join us in making a difference in
+            students' lives around the world.
+          </p>
+          <a
+            href="/careers"
+            class="inline-block px-8 py-3 bg-white text-primary-700 font-semibold rounded-md hover:bg-primary-50 transition duration-300 animate delay-3"
+          >
+            View Open Positions
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-primary-600 text-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col lg:flex-row items-center justify-between">
+          <div class="mb-8 lg:mb-0 lg:mr-8 animate">
+            <h2 class="text-2xl md:text-3xl font-bold mb-3">
+              Subscribe to Our Newsletter
+            </h2>
+            <p class="text-primary-100">
+              Get the latest updates on courses, events, and educational
+              resources.
+            </p>
+          </div>
+          <div class="lg:w-1/2 animate delay-2">
+            <form class="flex flex-col sm:flex-row space-y-4 sm:space-y-0">
+              <input
+                type="email"
+                placeholder="Your email address"
+                class="px-4 py-3 rounded-l-md sm:rounded-r-none w-full focus:outline-none text-secondary-800"
+              />
+              <button
+                type="submit"
+                class="px-6 py-3 bg-white text-primary-600 font-semibold rounded-r-md sm:rounded-l-none hover:bg-primary-50 transition duration-300"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-900 text-white pt-16 pb-8">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <!-- Company Info -->
+          <div class="animate">
+            <a href="/" class="flex items-center space-x-3 mb-6">
+              <div
+                class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center"
+              >
+                <span class="text-white text-xl font-bold">H</span>
+              </div>
+              <span class="text-2xl font-bold text-white">Horizon</span>
+            </a>
+            <p class="text-secondary-300 mb-6">
+              Transforming education through innovation and personalized
+              learning experiences for students worldwide.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 bg-secondary-800 text-white rounded-full flex items-center justify-center hover:bg-primary-600 transition"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-secondary-800 text-white rounded-full flex items-center justify-center hover:bg-primary-600 transition"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-secondary-800 text-white rounded-full flex items-center justify-center hover:bg-primary-600 transition"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-secondary-800 text-white rounded-full flex items-center justify-center hover:bg-primary-600 transition"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="animate delay-1">
+            <h4 class="text-lg font-semibold mb-6">Quick Links</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="/"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/about"
+                  class="text-secondary-300 hover:text-white transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/courses"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Courses</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/blog"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Blog</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/schedule"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Schedule</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/contact"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div class="animate delay-2">
+            <h4 class="text-lg font-semibold mb-6">Resources</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="/student-portal"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Student Portal</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/calendar"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Course Calendar</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/scholarships"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Scholarships</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/careers"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Career Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/faq"
+                  class="text-secondary-300 hover:text-white transition"
+                  >FAQ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/support"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Help & Support</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="animate delay-3">
+            <h4 class="text-lg font-semibold mb-6">Contact Info</h4>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt text-primary-500 mt-1 mr-3"></i>
+                <span class="text-secondary-300"
+                  >123 Education Avenue, Tech City, CA 90210</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-envelope text-primary-500 mt-1 mr-3"></i>
+                <span class="text-secondary-300"
+                  >info@horizoneducation.com</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-phone text-primary-500 mt-1 mr-3"></i>
+                <span class="text-secondary-300">(123) 456-7890</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-clock text-primary-500 mt-1 mr-3"></i>
+                <span class="text-secondary-300"
+                  >Mon-Fri: 9:00 AM - 5:00 PM</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-secondary-800 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-secondary-400 text-sm mb-4 md:mb-0">
+            &copy; 2025 Horizon Education. All rights reserved.
+          </p>
+          <div class="flex space-x-6">
+            <a
+              href="/privacy"
+              class="text-secondary-400 hover:text-white text-sm transition"
+              >Privacy Policy</a
+            >
+            <a
+              href="/terms"
+              class="text-secondary-400 hover:text-white text-sm transition"
+              >Terms of Service</a
+            >
+            <a
+              href="/cookies"
+              class="text-secondary-400 hover:text-white text-sm transition"
+              >Cookie Policy</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./js/main_script.js"></script>
+  </body>
+</html>
