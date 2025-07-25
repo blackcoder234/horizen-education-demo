@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizon Education | Modern Learning Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #f8f9fa;
+      --accent: #3498db;
+      --text: #333333;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    .navbar {
+      transition: all 0.3s ease;
+    }
+    
+    .navbar.scrolled {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .testimonial-card {
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      background-color: rgba(52, 152, 219, 0.05);
+    }
+    
+    .calendar-day.active {
+      background-color: var(--accent);
+      color: white;
+    }
+    
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+    
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="navbar fixed w-full z-10 bg-white md:bg-transparent text-gray-800 md:text-white py-4">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold flex items-center">
+        <img src="https://placehold.co/40" alt="Horizon Education logo - an abstract blue graduation cap" class="mr-2">
+        Horizon Education
+      </a>
+      
+      <div class="hidden md:flex space-x-8">
+        <a href="#home" class="hover:text-blue-400">Home</a>
+        <a href="#about" class="hover:text-blue-400">About</a>
+        <a href="#courses" class="hover:text-blue-400">Courses</a>
+        <a href="#blog" class="hover:text-blue-400">Blog</a>
+        <a href="#schedule" class="hover:text-blue-400">Schedule</a>
+        <a href="#contact" class="hover:text-blue-400">Contact</a>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition hidden md:block">Login</button>
+        <button id="mobile-menu-button" class="md:hidden text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white w-full absolute left-0 mt-4 shadow-lg">
+      <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+        <a href="#home" class="py-2 hover:text-blue-400">Home</a>
+        <a href="#about" class="py-2 hover:text-blue-400">About</a>
+        <a href="#courses" class="py-2 hover:text-blue-400">Courses</a>
+        <a href="#blog" class="py-2 hover:text-blue-400">Blog</a>
+        <a href="#schedule" class="py-2 hover:text-blue-400">Schedule</a>
+        <a href="#contact" class="py-2 hover:text-blue-400">Contact</a>
+        <button class="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Login</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+      <div class="md:w-1/2 mb-10 md:mb-0">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Transform Your Learning Experience</h1>
+        <p class="text-xl mb-8">Personalized education tailored to your needs with our expert educators and modern teaching methods.</p>
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+          <button class="px-6 py-3 bg-white text-blue-700 font-semibold rounded hover:bg-gray-100 transition">Browse Courses</button>
+          <button class="px-6 py-3 border-2 border-white text-white font-semibold rounded hover:bg-white hover:text-blue-700 transition">Watch Demo</button>
+        </div>
+      </div>
+      <div class="md:w-1/2">
+        <img src="https://placehold.co/600x400" alt="Diverse group of students engaged in learning in a modern classroom setting with natural lighting" class="rounded-lg shadow-xl">
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-blue-900 mb-4">Our Teaching Philosophy</h2>
+        <p class="max-w-3xl mx-auto text-gray-600">We believe education should be accessible, engaging, and tailored to individual learning styles.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-globe text-blue-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Global Perspective</h3>
+          <p class="text-gray-600">Our curriculum incorporates international best practices and diverse viewpoints.</p>
+        </div>
+        
+        <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-lightbulb text-blue-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Innovative Methods</h3>
+          <p class="text-gray-600">We combine traditional teaching with modern technology for optimal learning.</p>
+        </div>
+        
+        <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-user-graduate text-blue-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Student-Centered</h3>
+          <p class="text-gray-600">Every lesson is designed with the student's learning journey in mind.</p>
+        </div>
+      </div>
+      
+      <div class="mt-16 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+          <img src="https://placehold.co/500x350" alt="Teacher engaging with students in a modern classroom with interactive whiteboard" class="rounded-lg shadow">
+        </div>
+        <div class="md:w-1/2">
+          <h2 class="text-2xl font-bold text-blue-900 mb-6">About Our Educators</h2>
+          <p class="text-gray-600 mb-4">Our team consists of passionate educators with extensive experience in their respective fields, committed to nurturing the next generation of thinkers and leaders.</p>
+          <p class="text-gray-600 mb-6">We carefully select instructors who not only possess academic qualifications but also demonstrate exceptional teaching abilities and dedication to student success.</p>
+          <button class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Meet Our Team</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section id="courses" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-blue-900 mb-4">Featured Courses</h2>
+        <p class="max-w-3xl mx-auto text-gray-600">Explore our comprehensive course offerings designed to meet various learning needs and levels.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Course Card 1 -->
+        <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+          <img src="https://placehold.co/600x300" alt="Mathematics textbook and geometry tools on wooden desk" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <span class="inline-block px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-800 rounded-full mb-2">STEM</span>
+            <h3 class="text-xl font-semibold mb-2">Advanced Mathematics</h3>
+            <p class="text-gray-600 mb-4">Master advanced concepts in calculus, algebra, and statistics with our expert instructors.</p>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center">
+                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                <span class="text-sm font-medium">4.8</span>
+                <span class="text-sm text-gray-500 ml-2">(124)</span>
+              </div>
+              <span class="font-bold text-blue-600">$149</span>
+            </div>
+            <div class="mt-4 flex space-x-2">
+              <button class="flex-1 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Enroll</button>
+              <button class="p-2 bg-gray-100 rounded hover:bg-gray-200 transition">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Course Card 2 -->
+        <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+          <img src="https://placehold.co/600x300" alt="Computer screen showing programming code with a notebook beside it" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <span class="inline-block px-3 py-1 text-xs font-semibold bg-purple-100 text-purple-800 rounded-full mb-2">Technology</span>
+            <h3 class="text-xl font-semibold mb-2">Web Development Bootcamp</h3>
+            <p class="text-gray-600 mb-4">Learn full-stack web development with HTML, CSS, JavaScript, and modern frameworks.</p>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center">
+                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                <span class="text-sm font-medium">4.9</span>
+                <span class="text-sm text-gray-500 ml-2">(87)</span>
+              </div>
+              <span class="font-bold text-blue-600">$199</span>
+            </div>
+            <div class="mt-4 flex space-x-2">
+              <button class="flex-1 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Enroll</button>
+              <button class="p-2 bg-gray-100 rounded hover:bg-gray-200 transition">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </body>
+      </html>
