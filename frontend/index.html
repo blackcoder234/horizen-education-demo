@@ -1,562 +1,1686 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Horizon Education | Modern Learning Solutions</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root {
-      --primary: #2c3e50;
-      --secondary: #f8f9fa;
-      --accent: #3498db;
-      --text: #333333;
-    }
-    
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: var(--text);
-      line-height: 1.6;
-    }
-    
-    .navbar {
-      transition: all 0.3s ease;
-    }
-    
-    .navbar.scrolled {
-      background-color: white;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    .course-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-    
-    .testimonial-card {
-      transition: all 0.3s ease;
-    }
-    
-    .testimonial-card:hover {
-      background-color: rgba(52, 152, 219, 0.05);
-    }
-    
-    .calendar-day.active {
-      background-color: var(--accent);
-      color: white;
-    }
-    
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-    }
-    
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  </style>
-</head>
-<body class="bg-gray-50">
-  <!-- Navigation -->
-  <nav class="navbar fixed w-full z-10 bg-white md:bg-transparent text-gray-800 md:text-white py-4">
-    <div class="container mx-auto px-4 flex justify-between items-center">
-      <a href="#" class="text-2xl font-bold flex items-center">
-        <img src="https://placehold.co/40" alt="Horizon Education logo - an abstract blue graduation cap" class="mr-2">
-        Horizon Education
-      </a>
-      
-      <div class="hidden md:flex space-x-8">
-        <a href="#home" class="hover:text-blue-400">Home</a>
-        <a href="#about" class="hover:text-blue-400">About</a>
-        <a href="#courses" class="hover:text-blue-400">Courses</a>
-        <a href="#blog" class="hover:text-blue-400">Blog</a>
-        <a href="#schedule" class="hover:text-blue-400">Schedule</a>
-        <a href="#contact" class="hover:text-blue-400">Contact</a>
-      </div>
-      
-      <div class="flex items-center space-x-4">
-        <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition hidden md:block">Login</button>
-        <button id="mobile-menu-button" class="md:hidden text-2xl">
-          <i class="fas fa-bars"></i>
-        </button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Horizon Education | Modern Learning Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#f0f9ff",
+                100: "#e0f2fe",
+                200: "#bae6fd",
+                300: "#7dd3fc",
+                400: "#38bdf8",
+                500: "#0ea5e9",
+                600: "#0284c7",
+                700: "#0369a1",
+                800: "#075985",
+                900: "#0c4a6e",
+              },
+              secondary: {
+                50: "#f8fafc",
+                100: "#f1f5f9",
+                200: "#e2e8f0",
+                300: "#cbd5e1",
+                400: "#94a3b8",
+                500: "#64748b",
+                600: "#475569",
+                700: "#334155",
+                800: "#1e293b",
+                900: "#0f172a",
+              },
+            },
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-secondary-50 scroll-animations">
+    <!-- mobile overlay -->
+    <div class="mobile-menu-overlay"></div>
+    <!-- Page Loader -->
+    <div class="loader">
+      <div class="loader-content flex flex-col items-center">
+        <div class="loader-circle"></div>
+        <p class="mt-4 text-primary-600 font-medium">
+          Loading Horizon Education...
+        </p>
       </div>
     </div>
-    
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white w-full absolute left-0 mt-4 shadow-lg">
-      <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
-        <a href="#home" class="py-2 hover:text-blue-400">Home</a>
-        <a href="#about" class="py-2 hover:text-blue-400">About</a>
-        <a href="#courses" class="py-2 hover:text-blue-400">Courses</a>
-        <a href="#blog" class="py-2 hover:text-blue-400">Blog</a>
-        <a href="#schedule" class="py-2 hover:text-blue-400">Schedule</a>
-        <a href="#contact" class="py-2 hover:text-blue-400">Contact</a>
-        <button class="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Login</button>
-      </div>
-    </div>
-  </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
-    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-      <div class="md:w-1/2 mb-10 md:mb-0">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">Transform Your Learning Experience</h1>
-        <p class="text-xl mb-8">Personalized education tailored to your needs with our expert educators and modern teaching methods.</p>
-        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-          <button class="px-6 py-3 bg-white text-blue-700 font-semibold rounded hover:bg-gray-100 transition">Browse Courses</button>
-          <button class="px-6 py-3 border-2 border-white text-white font-semibold rounded hover:bg-white hover:text-blue-700 transition">Watch Demo</button>
-        </div>
-      </div>
-      <div class="md:w-1/2">
-        <img src="https://placehold.co/600x400" alt="Diverse group of students engaged in learning in a modern classroom setting with natural lighting" class="rounded-lg shadow-xl">
-      </div>
-    </div>
-  </section>
+    <!-- Navigation -->
 
-  <!-- About Section -->
-  <section id="about" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-blue-900 mb-4">Our Teaching Philosophy</h2>
-        <p class="max-w-3xl mx-auto text-gray-600">We believe education should be accessible, engaging, and tailored to individual learning styles.</p>
-      </div>
-      
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
-          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-globe text-blue-600 text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-semibold mb-2">Global Perspective</h3>
-          <p class="text-gray-600">Our curriculum incorporates international best practices and diverse viewpoints.</p>
-        </div>
-        
-        <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
-          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-lightbulb text-blue-600 text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-semibold mb-2">Innovative Methods</h3>
-          <p class="text-gray-600">We combine traditional teaching with modern technology for optimal learning.</p>
-        </div>
-        
-        <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
-          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-user-graduate text-blue-600 text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-semibold mb-2">Student-Centered</h3>
-          <p class="text-gray-600">Every lesson is designed with the student's learning journey in mind.</p>
-        </div>
-      </div>
-      
-      <div class="mt-16 flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-          <img src="https://placehold.co/500x350" alt="Teacher engaging with students in a modern classroom with interactive whiteboard" class="rounded-lg shadow">
-        </div>
-        <div class="md:w-1/2">
-          <h2 class="text-2xl font-bold text-blue-900 mb-6">About Our Educators</h2>
-          <p class="text-gray-600 mb-4">Our team consists of passionate educators with extensive experience in their respective fields, committed to nurturing the next generation of thinkers and leaders.</p>
-          <p class="text-gray-600 mb-6">We carefully select instructors who not only possess academic qualifications but also demonstrate exceptional teaching abilities and dedication to student success.</p>
-          <button class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Meet Our Team</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Courses Section -->
-  <section id="courses" class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-blue-900 mb-4">Featured Courses</h2>
-        <p class="max-w-3xl mx-auto text-gray-600">Explore our comprehensive course offerings designed to meet various learning needs and levels.</p>
-      </div>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Course Card 1 -->
-        <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
-          <img src="https://placehold.co/600x300" alt="Mathematics textbook and geometry tools on wooden desk" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <span class="inline-block px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-800 rounded-full mb-2">STEM</span>
-            <h3 class="text-xl font-semibold mb-2">Advanced Mathematics</h3>
-            <p class="text-gray-600 mb-4">Master advanced concepts in calculus, algebra, and statistics with our expert instructors.</p>
-            <div class="flex justify-between items-center">
-              <div class="flex items-center">
-                <i class="fas fa-star text-yellow-400 mr-1"></i>
-                <span class="text-sm font-medium">4.8</span>
-                <span class="text-sm text-gray-500 ml-2">(124)</span>
-              </div>
-              <span class="font-bold text-blue-600">$149</span>
+    <nav
+      class="navbar fixed w-full z-50 py-4 transition-all duration-300 bg-primary-700/90 backdrop-blur-sm"
+    >
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex justify-between items-center">
+          <a href="#" class="flex items-center space-x-3">
+            <div
+              class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center"
+            >
+              <span class="text-white text-xl font-bold">H</span>
             </div>
-            <div class="mt-4 flex space-x-2">
-              <button class="flex-1 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Enroll</button>
-              <button class="p-2 bg-gray-100 rounded hover:bg-gray-200 transition">
-                <i class="fas fa-info-circle"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Course Card 2 -->
-        <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
-          <img src="https://placehold.co/600x300" alt="Computer screen showing programming code with a notebook beside it" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <span class="inline-block px-3 py-1 text-xs font-semibold bg-purple-100 text-purple-800 rounded-full mb-2">Technology</span>
-            <h3 class="text-xl font-semibold mb-2">Web Development Bootcamp</h3>
-            <p class="text-gray-600 mb-4">Learn full-stack web development with HTML, CSS, JavaScript, and modern frameworks.</p>
-            <div class="flex justify-between items-center">
-              <div class="flex items-center">
-                <i class="fas fa-star text-yellow-400 mr-1"></i>
-                <span class="text-sm font-medium">4.9</span>
-                <span class="text-sm text-gray-500 ml-2">(87)</span>
-              </div>
-              <span class="font-bold text-blue-600">$199</span>
-            </div>
-            <div class="mt-4 flex space-x-2">
-              <button class="flex-1 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Enroll</button>
-              <button class="p-2 bg-gray-100 rounded hover:bg-gray-200 transition">
-                <i class="fas fa-info-circle"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Course Card 3 (Added) -->
-        <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
-          <img src="https://placehold.co/600x300" alt="Language books with headphones and conversation practice notes" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <span class="inline-block px-3 py-1 text-xs font-semibold bg-green-100 text-green-800 rounded-full mb-2">Languages</span>
-            <h3 class="text-xl font-semibold mb-2">Business English</h3>
-            <p class="text-gray-600 mb-4">Enhance your professional communication skills with our practical business English course.</p>
-            <div class="flex justify-between items-center">
-              <div class="flex items-center">
-                <i class="fas fa-star text-yellow-400 mr-1"></i>
-                <span class="text-sm font-medium">4.7</span>
-                <span class="text-sm text-gray-500 ml-2">(95)</span>
-              </div>
-              <span class="font-bold text-blue-600">$129</span>
-            </div>
-            <div class="mt-4 flex space-x-2">
-              <button class="flex-1 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Enroll</button>
-              <button class="p-2 bg-gray-100 rounded hover:bg-gray-200 transition">
-                <i class="fas fa-info-circle"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="text-center mt-12">
-        <button class="px-8 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition">View All Courses</button>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Blog Section -->
-  <section id="blog" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-blue-900 mb-4">Latest Articles</h2>
-        <p class="max-w-3xl mx-auto text-gray-600">Stay updated with our educational insights and teaching methodologies.</p>
-      </div>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Blog Post 1 -->
-        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-          <img src="https://placehold.co/600x300" alt="Student studying at a desk with laptop and books" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <div class="flex items-center mb-4">
-              <span class="text-sm text-gray-500">July 15, 2025</span>
-              <span class="mx-2 text-gray-400">•</span>
-              <span class="text-sm text-blue-600">Education</span>
-            </div>
-            <h3 class="text-xl font-semibold mb-3">Effective Study Techniques for Modern Learners</h3>
-            <p class="text-gray-600 mb-4">Discover science-backed methods to improve retention and make your study sessions more productive.</p>
-            <a href="#" class="text-blue-600 font-medium hover:text-blue-800 transition flex items-center">
-              Read More
-              <i class="fas fa-arrow-right text-xs ml-2"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Blog Post 2 -->
-        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-          <img src="https://placehold.co/600x300" alt="Teacher using digital tablet in classroom" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <div class="flex items-center mb-4">
-              <span class="text-sm text-gray-500">July 10, 2025</span>
-              <span class="mx-2 text-gray-400">•</span>
-              <span class="text-sm text-blue-600">Technology</span>
-            </div>
-            <h3 class="text-xl font-semibold mb-3">EdTech Tools That Transform the Learning Experience</h3>
-            <p class="text-gray-600 mb-4">Explore the latest educational technology tools that are changing how we teach and learn.</p>
-            <a href="#" class="text-blue-600 font-medium hover:text-blue-800 transition flex items-center">
-              Read More
-              <i class="fas fa-arrow-right text-xs ml-2"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Blog Post 3 -->
-        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-          <img src="https://placehold.co/600x300" alt="Students collaborating on a project" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <div class="flex items-center mb-4">
-              <span class="text-sm text-gray-500">July 5, 2025</span>
-              <span class="mx-2 text-gray-400">•</span>
-              <span class="text-sm text-blue-600">Learning</span>
-            </div>
-            <h3 class="text-xl font-semibold mb-3">The Power of Collaborative Learning Environments</h3>
-            <p class="text-gray-600 mb-4">Learn how collaborative approaches to education enhance critical thinking and problem-solving skills.</p>
-            <a href="#" class="text-blue-600 font-medium hover:text-blue-800 transition flex items-center">
-              Read More
-              <i class="fas fa-arrow-right text-xs ml-2"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Schedule Section -->
-  <section id="schedule" class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-blue-900 mb-4">Upcoming Sessions</h2>
-        <p class="max-w-3xl mx-auto text-gray-600">Join our upcoming webinars and information sessions to learn more about our programs.</p>
-      </div>
-      
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <div class="flex items-center mb-4">
-            <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-              <span class="text-blue-600 font-bold">24</span>
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold">Introduction to Data Science</h3>
-              <p class="text-gray-600">July 24, 2025 • 3:00 PM - 4:30 PM EST</p>
-            </div>
-          </div>
-          <p class="text-gray-600 mb-4">Learn about our data science program and career opportunities in this growing field.</p>
-          <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Register Now</button>
-        </div>
-        
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <div class="flex items-center mb-4">
-            <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-              <span class="text-blue-600 font-bold">27</span>
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold">Financial Aid Workshop</h3>
-              <p class="text-gray-600">July 27, 2025 • 1:00 PM - 2:00 PM EST</p>
-            </div>
-          </div>
-          <p class="text-gray-600 mb-4">Get information about available scholarships, grants, and financial assistance options.</p>
-          <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Register Now</button>
-        </div>
-      </div>
-      
-      <div class="mt-12 text-center">
-        <a href="#" class="text-blue-600 font-medium hover:text-blue-800 transition">View Full Calendar</a>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Contact Section -->
-  <section id="contact" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-blue-900 mb-4">Get In Touch</h2>
-        <p class="max-w-3xl mx-auto text-gray-600">Have questions? Our team is here to help you with any inquiries about our programs.</p>
-      </div>
-      
-      <div class="flex flex-col md:flex-row gap-8">
-        <div class="md:w-1/2 bg-gray-50 p-6 rounded-lg">
-          <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
-          
-          <div class="flex items-start mb-6">
-            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-              <i class="fas fa-map-marker-alt text-blue-600"></i>
-            </div>
-            <div>
-              <h4 class="font-medium mb-1">Location</h4>
-              <p class="text-gray-600">123 Education Avenue, Tech City, CA 90210</p>
-            </div>
-          </div>
-          
-          <div class="flex items-start mb-6">
-            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-              <i class="fas fa-phone text-blue-600"></i>
-            </div>
-            <div>
-              <h4 class="font-medium mb-1">Phone</h4>
-              <p class="text-gray-600">(123) 456-7890</p>
-            </div>
-          </div>
-          
-          <div class="flex items-start mb-6">
-            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-              <i class="fas fa-envelope text-blue-600"></i>
-            </div>
-            <div>
-              <h4 class="font-medium mb-1">Email</h4>
-              <p class="text-gray-600">info@horizonedu.com</p>
-            </div>
-          </div>
-          
-          <div class="flex space-x-4 mt-8">
-            <a href="#" class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="w-10 h-10 bg-blue-400 text-white rounded-full flex items-center justify-center hover:bg-blue-500 transition">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="w-10 h-10 bg-blue-800 text-white rounded-full flex items-center justify-center hover:bg-blue-900 transition">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="#" class="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center hover:bg-red-700 transition">
-              <i class="fab fa-youtube"></i>
-            </a>
-          </div>
-        </div>
-        
-        <div class="md:w-1/2">
-          <form class="space-y-6">
-            <div class="grid md:grid-cols-2 gap-6">
-              <div>
-                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-              </div>
-              <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-              </div>
-            </div>
-            
-            <div>
-              <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
-              <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-            </div>
-            
-            <div>
-              <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-              <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-            </div>
-            
-            <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Send Message</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Footer -->
-  <footer class="bg-blue-900 text-white py-12">
-    <div class="container mx-auto px-4">
-      <div class="grid md:grid-cols-4 gap-8">
-        <div>
-          <a href="#" class="text-2xl font-bold flex items-center mb-4">
-            <img src="https://placehold.co/40" alt="Horizon Education logo" class="mr-2">
-            Horizon Education
+            <span class="text-2xl font-bold text-white">Horizon</span>
           </a>
-          <p class="text-blue-200 mb-4">Transforming education through innovation and personalized learning experiences.</p>
-          <div class="flex space-x-4">
-            <a href="#" class="text-blue-200 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="text-blue-200 hover:text-white transition"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-blue-200 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="text-blue-200 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="#home"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >About</a
+            >
+            <a
+              href="#courses"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Courses</a
+            >
+            <a
+              href="#blog"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Blog</a
+            >
+            <a
+              href="#schedule"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Schedule</a
+            >
+            <a
+              href="#contact"
+              class="nav-link text-white hover:text-primary-200 transition"
+              >Contact</a
+            >
+          </div>
+
+          <div class="hidden md:flex items-center space-x-4">
+            <a
+              href="#"
+              class="px-4 py-2 border border-white text-white rounded-md hover:bg-white hover:text-primary-600 transition duration-300"
+              >Sign In</a
+            >
+            <a
+              href="#"
+              class="px-4 py-2 bg-primary-500 text-white rounded-md hover:bg-primary-600 transition duration-300"
+              >Register</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-button"
+            class="md:hidden text-white text-2xl focus:outline-none"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden">
+          <div class="flex flex-col py-2">
+            <a
+              href="#home"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >About</a
+            >
+            <a
+              href="#courses"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Courses</a
+            >
+            <a
+              href="#blog"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Blog</a
+            >
+            <a
+              href="#schedule"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Schedule</a
+            >
+            <a
+              href="#contact"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Contact</a
+            >
+            <div class="border-t border-gray-200 my-2"></div>
+            <a
+              href="#"
+              class="px-4 py-3 text-secondary-800 hover:bg-primary-50 transition"
+              >Sign In</a
+            >
+            <a
+              href="#"
+              class="mx-4 my-2 py-2 bg-primary-500 text-white rounded-md text-center hover:bg-primary-600 transition"
+              >Register</a
+            >
           </div>
         </div>
-        
-        <div>
-          <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-          <ul class="space-y-2">
-            <li><a href="#home" class="text-blue-200 hover:text-white transition">Home</a></li>
-            <li><a href="#about" class="text-blue-200 hover:text-white transition">About Us</a></li>
-            <li><a href="#courses" class="text-blue-200 hover:text-white transition">Courses</a></li>
-            <li><a href="#blog" class="text-blue-200 hover:text-white transition">Blog</a></li>
-            <li><a href="#contact" class="text-blue-200 hover:text-white transition">Contact</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="text-lg font-semibold mb-4">Resources</h4>
-          <ul class="space-y-2">
-            <li><a href="#" class="text-blue-200 hover:text-white transition">Student Portal</a></li>
-            <li><a href="#" class="text-blue-200 hover:text-white transition">Course Calendar</a></li>
-            <li><a href="#" class="text-blue-200 hover:text-white transition">Scholarships</a></li>
-            <li><a href="#" class="text-blue-200 hover:text-white transition">Career Services</a></li>
-            <li><a href="#" class="text-blue-200 hover:text-white transition">FAQ</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
-          <p class="text-blue-200 mb-4">Subscribe to our newsletter for the latest updates on courses and events.</p>
-          <form class="flex">
-            <input type="email" placeholder="Your email" class="px-4 py-2 w-full text-gray-800 rounded-l focus:outline-none">
-            <button class="bg-blue-600 text-white px-4 py-2 rounded-r hover:bg-blue-700 transition">
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </form>
-        </div>
       </div>
-      
-      <div class="border-t border-blue-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
-        <p class="text-blue-200 text-sm mb-4 md:mb-0">&copy; 2025 Horizon Education. All rights reserved.</p>
-        <div class="flex space-x-6">
-          <a href="#" class="text-blue-200 hover:text-white text-sm transition">Privacy Policy</a>
-          <a href="#" class="text-blue-200 hover:text-white text-sm transition">Terms of Service</a>
-          <a href="#" class="text-blue-200 hover:text-white text-sm transition">Cookie Policy</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+    </nav>
 
-  <!-- Move JavaScript to separate section at bottom -->
-  <script>
-    // Mobile menu toggle
-    document.getElementById('mobile-menu-button').addEventListener('click', function() {
-      const mobileMenu = document.getElementById('mobile-menu');
-      mobileMenu.classList.toggle('hidden');
-    });
-    
-    // Navigation background change on scroll
-    window.addEventListener('scroll', function() {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
-          
-          // Close mobile menu if open
-          const mobileMenu = document.getElementById('mobile-menu');
-          if (!mobileMenu.classList.contains('hidden')) {
-            mobileMenu.classList.add('hidden');
-          }
-        }
-      });
-    });
-  </script>
-</body>
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="hero-gradient min-h-screen flex items-center pt-20 pb-16"
+    >
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-12 md:mb-0">
+            <h1
+              class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate delay-1"
+            >
+              Transform Your
+              <span class="text-primary-300">Learning</span> Experience
+            </h1>
+            <p class="text-xl text-white/80 mb-8 animate delay-2">
+              Personalized education tailored to your needs with expert
+              educators and innovative teaching methods.
+            </p>
+            <div
+              class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate delay-3"
+            >
+              <a
+                href="#courses"
+                class="px-8 py-3 bg-white text-primary-700 font-semibold rounded-md hover:bg-primary-50 transition duration-300 animated-btn text-center"
+              >
+                Explore Courses
+              </a>
+              <a
+                href="#"
+                class="px-8 py-3 border border-white text-white font-semibold rounded-md hover:bg-white/10 transition duration-300 animated-btn text-center"
+              >
+                Watch Demo
+              </a>
+            </div>
+            <div class="mt-12 flex items-center space-x-6 animate delay-4">
+              <div class="flex -space-x-2">
+                <img
+                  src="https://randomuser.me/api/portraits/women/79.jpg"
+                  class="w-10 h-10 rounded-full border-2 border-white"
+                  alt="Student"
+                />
+                <img
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  class="w-10 h-10 rounded-full border-2 border-white"
+                  alt="Student"
+                />
+                <img
+                  src="https://randomuser.me/api/portraits/women/44.jpg"
+                  class="w-10 h-10 rounded-full border-2 border-white"
+                  alt="Student"
+                />
+                <img
+                  src="https://randomuser.me/api/portraits/men/68.jpg"
+                  class="w-10 h-10 rounded-full border-2 border-white"
+                  alt="Student"
+                />
+              </div>
+              <div class="text-white">
+                <p class="font-medium">Joined by 2,000+ students</p>
+                <div class="flex mt-1">
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star-half-alt text-yellow-400"></i>
+                  <span class="ml-2 text-white/80">4.8/5</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="md:w-1/2 md:pl-12 animate delay-2">
+            <div class="relative">
+              <div
+                class="absolute -left-6 -top-6 w-24 h-24 bg-primary-400 rounded-lg opacity-20"
+              ></div>
+              <div
+                class="absolute -right-6 -bottom-6 w-24 h-24 bg-primary-400 rounded-lg opacity-20"
+              ></div>
+              <img
+                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                alt="Students learning together"
+                class="w-full h-auto rounded-xl shadow-2xl relative z-10"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 animate"
+          >
+            Why Choose Horizon Education
+          </h2>
+          <p
+            class="max-w-3xl mx-auto text-secondary-600 text-lg animate delay-1"
+          >
+            We combine modern technology with proven teaching methods to deliver
+            exceptional learning experiences.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Feature 1 -->
+          <div
+            class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 animate delay-1"
+          >
+            <div
+              class="feature-icon w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-graduation-cap text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-secondary-900 mb-3">
+              Expert Educators
+            </h3>
+            <p class="text-secondary-600">
+              Learn from industry professionals and academic experts with proven
+              track records.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div
+            class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 animate delay-2"
+          >
+            <div
+              class="feature-icon w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-laptop text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-secondary-900 mb-3">
+              Interactive Learning
+            </h3>
+            <p class="text-secondary-600">
+              Engage with dynamic content, quizzes, and collaborative projects
+              that enhance retention.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div
+            class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 animate delay-3"
+          >
+            <div
+              class="feature-icon w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-clock text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-secondary-900 mb-3">
+              Flexible Schedule
+            </h3>
+            <p class="text-secondary-600">
+              Learn at your own pace with 24/7 access to course materials and
+              recorded sessions.
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div
+            class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 animate delay-1"
+          >
+            <div
+              class="feature-icon w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-certificate text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-secondary-900 mb-3">
+              Recognized Certification
+            </h3>
+            <p class="text-secondary-600">
+              Earn certificates that are valued by employers and educational
+              institutions alike.
+            </p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div
+            class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 animate delay-2"
+          >
+            <div
+              class="feature-icon w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-comments text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-secondary-900 mb-3">
+              Community Support
+            </h3>
+            <p class="text-secondary-600">
+              Join a vibrant community of learners and instructors who support
+              your educational journey.
+            </p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div
+            class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 animate delay-3"
+          >
+            <div
+              class="feature-icon w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-chart-line text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-secondary-900 mb-3">
+              Progress Tracking
+            </h3>
+            <p class="text-secondary-600">
+              Monitor your learning progress with detailed analytics and
+              personalized feedback.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-secondary-50">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col lg:flex-row items-center">
+          <div class="lg:w-1/2 mb-12 lg:mb-0 animate">
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                alt="Teacher working with students"
+                class="w-full h-auto rounded-xl shadow-lg"
+              />
+              <div
+                class="absolute -bottom-8 -right-8 bg-white p-4 rounded-lg shadow-lg flex items-center animate delay-2"
+              >
+                <div
+                  class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mr-4"
+                >
+                  <i class="fas fa-trophy text-primary-600"></i>
+                </div>
+                <div>
+                  <p class="font-bold text-secondary-900">Trusted by</p>
+                  <p class="text-secondary-600">500+ Schools</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:w-1/2 lg:pl-16">
+            <div
+              class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-6 animate"
+            >
+              About Horizon Education
+            </div>
+            <h2
+              class="text-3xl md:text-4xl font-bold text-secondary-900 mb-6 animate delay-1"
+            >
+              Our Teaching Philosophy
+            </h2>
+            <p class="text-secondary-600 text-lg mb-6 animate delay-2">
+              At Horizon Education, we believe learning should be engaging,
+              personalized, and effective. Our teaching methods combine
+              traditional wisdom with cutting-edge technology to create
+              transformative educational experiences.
+            </p>
+            <p class="text-secondary-600 mb-8 animate delay-3">
+              Our faculty consists of passionate educators with extensive
+              experience in their fields. We carefully select instructors who
+              are not only subject matter experts but also excellent
+              communicators who can inspire and guide students on their learning
+              journey.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+              <div class="flex items-start animate delay-2">
+                <div
+                  class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center mr-4 shrink-0"
+                >
+                  <i class="fas fa-check text-primary-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-secondary-900 mb-2">
+                    Student-Centered
+                  </h4>
+                  <p class="text-secondary-600">
+                    Curriculum designed around student needs and learning
+                    styles.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start animate delay-3">
+                <div
+                  class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center mr-4 shrink-0"
+                >
+                  <i class="fas fa-check text-primary-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-secondary-900 mb-2">
+                    Research-Backed
+                  </h4>
+                  <p class="text-secondary-600">
+                    Methods grounded in educational research and best practices.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="#"
+              class="inline-block px-8 py-3 bg-primary-600 text-white font-semibold rounded-md hover:bg-primary-700 transition duration-300 animated-btn animate delay-4"
+              >Learn More About Us</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-20 bg-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-8">
+          <div
+            class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4 animate"
+          >
+            Our Courses
+          </div>
+          <h2
+            class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 animate delay-1"
+          >
+            Featured Courses
+          </h2>
+          <p
+            class="max-w-3xl mx-auto text-secondary-600 text-lg mb-8 animate delay-2"
+          >
+            Explore our comprehensive course offerings designed to meet various
+            learning needs and levels.
+          </p>
+        </div>
+
+        <!-- Course Categories -->
+        <div class="flex flex-wrap justify-center mb-12 animate delay-2">
+          <button
+            class="px-6 py-2 m-2 bg-primary-600 text-white rounded-full hover:bg-primary-700 transition"
+          >
+            All Courses
+          </button>
+          <button
+            class="px-6 py-2 m-2 bg-secondary-100 text-secondary-800 rounded-full hover:bg-secondary-200 transition"
+          >
+            Technology
+          </button>
+          <button
+            class="px-6 py-2 m-2 bg-secondary-100 text-secondary-800 rounded-full hover:bg-secondary-200 transition"
+          >
+            Business
+          </button>
+          <button
+            class="px-6 py-2 m-2 bg-secondary-100 text-secondary-800 rounded-full hover:bg-secondary-200 transition"
+          >
+            Languages
+          </button>
+          <button
+            class="px-6 py-2 m-2 bg-secondary-100 text-secondary-800 rounded-full hover:bg-secondary-200 transition"
+          >
+            Science
+          </button>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Course Card 1 -->
+          <div
+            class="card-hover bg-white rounded-xl overflow-hidden shadow-lg border border-secondary-100 animate delay-1"
+          >
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1581093196277-9f6e9b96cc00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                alt="Web Development Course"
+                class="w-full h-52 object-cover"
+              />
+              <span
+                class="absolute top-4 left-4 bg-primary-600 text-white text-sm font-medium px-3 py-1 rounded-full"
+                >Most Popular</span
+              >
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-3">
+                <span
+                  class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium"
+                  >Technology</span
+                >
+                <div class="flex items-center">
+                  <i class="fas fa-star text-yellow-400 mr-1"></i>
+                  <span class="text-secondary-800 font-medium">4.9</span>
+                  <span class="text-secondary-500 ml-1">(256)</span>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                Full-Stack Web Development Bootcamp
+              </h3>
+              <p class="text-secondary-600 mb-4">
+                Master modern web development with HTML, CSS, JavaScript, and
+                popular frameworks like React and Node.js.
+              </p>
+              <div class="flex items-center mb-4">
+                <img
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  alt="Instructor"
+                  class="w-10 h-10 rounded-full mr-3"
+                />
+                <div>
+                  <p class="font-medium text-secondary-900">David Chen</p>
+                  <p class="text-sm text-secondary-500">Senior Developer</p>
+                </div>
+              </div>
+              <div
+                class="flex justify-between items-center pt-4 border-t border-secondary-100"
+              >
+                <span class="text-primary-600 font-bold text-xl">$129</span>
+                <a
+                  href="#"
+                  class="px-5 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition"
+                  >Enroll Now</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Course Card 2 -->
+          <div
+            class="card-hover bg-white rounded-xl overflow-hidden shadow-lg border border-secondary-100 animate delay-2"
+          >
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                alt="Data Science Course"
+                class="w-full h-52 object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-3">
+                <span
+                  class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm font-medium"
+                  >Science</span
+                >
+                <div class="flex items-center">
+                  <i class="fas fa-star text-yellow-400 mr-1"></i>
+                  <span class="text-secondary-800 font-medium">4.8</span>
+                  <span class="text-secondary-500 ml-1">(189)</span>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                Data Science & Machine Learning
+              </h3>
+              <p class="text-secondary-600 mb-4">
+                Learn data analysis, visualization, and machine learning
+                techniques using Python and industry tools.
+              </p>
+              <div class="flex items-center mb-4">
+                <img
+                  src="https://randomuser.me/api/portraits/women/44.jpg"
+                  alt="Instructor"
+                  class="w-10 h-10 rounded-full mr-3"
+                />
+                <div>
+                  <p class="font-medium text-secondary-900">Sophia Rodriguez</p>
+                  <p class="text-sm text-secondary-500">Data Scientist</p>
+                </div>
+              </div>
+              <div
+                class="flex justify-between items-center pt-4 border-t border-secondary-100"
+              >
+                <span class="text-primary-600 font-bold text-xl">$149</span>
+                <a
+                  href="#"
+                  class="px-5 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition"
+                  >Enroll Now</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Course Card 3 -->
+          <div
+            class="card-hover bg-white rounded-xl overflow-hidden shadow-lg border border-secondary-100 animate delay-3"
+          >
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1505238680356-667803448bb6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                alt="Business English Course"
+                class="w-full h-52 object-cover"
+              />
+              <span
+                class="absolute top-4 left-4 bg-green-600 text-white text-sm font-medium px-3 py-1 rounded-full"
+                >New</span
+              >
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-3">
+                <span
+                  class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm font-medium"
+                  >Languages</span
+                >
+                <div class="flex items-center">
+                  <i class="fas fa-star text-yellow-400 mr-1"></i>
+                  <span class="text-secondary-800 font-medium">4.7</span>
+                  <span class="text-secondary-500 ml-1">(132)</span>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                Business English for Professionals
+              </h3>
+              <p class="text-secondary-600 mb-4">
+                Enhance your professional communication skills with practical
+                business English for global workplaces.
+              </p>
+              <div class="flex items-center mb-4">
+                <img
+                  src="https://randomuser.me/api/portraits/women/68.jpg"
+                  alt="Instructor"
+                  class="w-10 h-10 rounded-full mr-3"
+                />
+                <div>
+                  <p class="font-medium text-secondary-900">Emily Watson</p>
+                  <p class="text-sm text-secondary-500">Language Specialist</p>
+                </div>
+              </div>
+              <div
+                class="flex justify-between items-center pt-4 border-t border-secondary-100"
+              >
+                <span class="text-primary-600 font-bold text-xl">$99</span>
+                <a
+                  href="#"
+                  class="px-5 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition"
+                  >Enroll Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12 animate delay-4">
+          <a
+            href="#"
+            class="inline-block px-8 py-3 bg-primary-600 text-white font-semibold rounded-md hover:bg-primary-700 transition duration-300 animated-btn"
+            >View All Courses</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-secondary-50">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+          <div
+            class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4 animate"
+          >
+            Testimonials
+          </div>
+          <h2
+            class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 animate delay-1"
+          >
+            What Our Students Say
+          </h2>
+          <p
+            class="max-w-3xl mx-auto text-secondary-600 text-lg animate delay-2"
+          >
+            Hear from students who have transformed their skills and careers
+            with our courses.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div
+            class="testimonial-card bg-white p-8 rounded-xl shadow-md animate delay-1"
+          >
+            <div class="flex items-center mb-6">
+              <img
+                src="https://randomuser.me/api/portraits/men/75.jpg"
+                alt="Student"
+                class="w-14 h-14 rounded-full mr-4"
+              />
+              <div>
+                <h4 class="font-bold text-secondary-900">Michael Johnson</h4>
+                <p class="text-secondary-500">Web Development Student</p>
+              </div>
+            </div>
+            <div class="mb-6">
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+            </div>
+            <p class="text-secondary-600 mb-4">
+              "The Full-Stack Web Development course exceeded my expectations.
+              The instructor was engaging and the material was comprehensive. I
+              was able to build a portfolio that helped me land my dream job."
+            </p>
+            <p class="text-secondary-500 text-sm">
+              Completed course 3 months ago
+            </p>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div
+            class="testimonial-card bg-white p-8 rounded-xl shadow-md animate delay-2"
+          >
+            <div class="flex items-center mb-6">
+              <img
+                src="https://randomuser.me/api/portraits/women/63.jpg"
+                alt="Student"
+                class="w-14 h-14 rounded-full mr-4"
+              />
+              <div>
+                <h4 class="font-bold text-secondary-900">Priya Sharma</h4>
+                <p class="text-secondary-500">Data Science Student</p>
+              </div>
+            </div>
+            <div class="mb-6">
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+            </div>
+            <p class="text-secondary-600 mb-4">
+              "The Data Science course was challenging but incredibly rewarding.
+              The instructor broke down complex concepts into manageable parts.
+              I've now transitioned from marketing to data analytics."
+            </p>
+            <p class="text-secondary-500 text-sm">
+              Completed course 6 months ago
+            </p>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div
+            class="testimonial-card bg-white p-8 rounded-xl shadow-md animate delay-3"
+          >
+            <div class="flex items-center mb-6">
+              <img
+                src="https://randomuser.me/api/portraits/men/36.jpg"
+                alt="Student"
+                class="w-14 h-14 rounded-full mr-4"
+              />
+              <div>
+                <h4 class="font-bold text-secondary-900">Carlos Mendez</h4>
+                <p class="text-secondary-500">Business English Student</p>
+              </div>
+            </div>
+            <div class="mb-6">
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star-half-alt text-yellow-400"></i>
+            </div>
+            <p class="text-secondary-600 mb-4">
+              "As a non-native English speaker, the Business English course was
+              exactly what I needed to improve my professional communication.
+              The practical approach and feedback from Emily were invaluable."
+            </p>
+            <p class="text-secondary-500 text-sm">
+              Completed course 2 months ago
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 bg-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+          <div
+            class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4 animate"
+          >
+            Our Blog
+          </div>
+          <h2
+            class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 animate delay-1"
+          >
+            Latest Articles & Resources
+          </h2>
+          <p
+            class="max-w-3xl mx-auto text-secondary-600 text-lg animate delay-2"
+          >
+            Stay updated with educational insights, teaching methodologies, and
+            student success stories.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Blog Post 1 -->
+          <div
+            class="card-hover bg-white rounded-xl overflow-hidden shadow-md animate delay-1"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+              alt="Effective Study Techniques"
+              class="w-full h-52 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-sm text-secondary-500">July 20, 2025</span>
+                <span class="mx-2 text-secondary-300">•</span>
+                <span class="text-sm text-primary-600">Learning</span>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                Effective Study Techniques for Modern Learners
+              </h3>
+              <p class="text-secondary-600 mb-4">
+                Discover science-backed methods to improve retention and make
+                your study sessions more productive.
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition"
+              >
+                Read More
+                <i class="fas fa-arrow-right text-sm ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Blog Post 2 -->
+          <div
+            class="card-hover bg-white rounded-xl overflow-hidden shadow-md animate delay-2"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+              alt="EdTech Tools"
+              class="w-full h-52 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-sm text-secondary-500">July 15, 2025</span>
+                <span class="mx-2 text-secondary-300">•</span>
+                <span class="text-sm text-primary-600">Technology</span>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                EdTech Tools That Transform the Learning Experience
+              </h3>
+              <p class="text-secondary-600 mb-4">
+                Explore the latest educational technology tools that are
+                changing how we teach and learn.
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition"
+              >
+                Read More
+                <i class="fas fa-arrow-right text-sm ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Blog Post 3 -->
+          <div
+            class="card-hover bg-white rounded-xl overflow-hidden shadow-md animate delay-3"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+              alt="Collaborative Learning"
+              class="w-full h-52 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-sm text-secondary-500">July 10, 2025</span>
+                <span class="mx-2 text-secondary-300">•</span>
+                <span class="text-sm text-primary-600">Education</span>
+              </div>
+              <h3 class="text-xl font-bold text-secondary-900 mb-3">
+                The Power of Collaborative Learning Environments
+              </h3>
+              <p class="text-secondary-600 mb-4">
+                Learn how collaborative approaches to education enhance critical
+                thinking and problem-solving skills.
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition"
+              >
+                Read More
+                <i class="fas fa-arrow-right text-sm ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12 animate delay-4">
+          <a
+            href="#"
+            class="inline-block px-8 py-3 border border-primary-600 text-primary-600 font-semibold rounded-md hover:bg-primary-50 transition duration-300"
+            >View All Articles</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="py-20 bg-secondary-50">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+          <div
+            class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4 animate"
+          >
+            Upcoming Events
+          </div>
+          <h2
+            class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 animate delay-1"
+          >
+            Webinars & Sessions
+          </h2>
+          <p
+            class="max-w-3xl mx-auto text-secondary-600 text-lg animate delay-2"
+          >
+            Join our upcoming webinars and information sessions to learn more
+            about our programs.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Event 1 -->
+          <div
+            class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate delay-1"
+          >
+            <div class="flex items-start">
+              <div
+                class="w-20 h-20 bg-primary-100 rounded-lg flex flex-col items-center justify-center mr-5 shrink-0"
+              >
+                <span class="text-primary-600 font-bold text-2xl">24</span>
+                <span class="text-primary-600 text-sm">July</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-secondary-900 mb-2">
+                  Introduction to Data Science
+                </h3>
+                <p class="text-secondary-500 mb-3">3:00 PM - 4:30 PM EST</p>
+                <p class="text-secondary-600 mb-4">
+                  Learn about our data science program and career opportunities
+                  in this growing field.
+                </p>
+                <div class="flex items-center">
+                  <img
+                    src="https://randomuser.me/api/portraits/women/44.jpg"
+                    alt="Instructor"
+                    class="w-10 h-10 rounded-full mr-3"
+                  />
+                  <div>
+                    <p class="font-medium text-secondary-900">
+                      Sophia Rodriguez
+                    </p>
+                    <p class="text-sm text-secondary-500">Data Scientist</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 text-right">
+              <a
+                href="#"
+                class="px-6 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition"
+                >Register Now</a
+              >
+            </div>
+          </div>
+
+          <!-- Event 2 -->
+          <div
+            class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate delay-2"
+          >
+            <div class="flex items-start">
+              <div
+                class="w-20 h-20 bg-primary-100 rounded-lg flex flex-col items-center justify-center mr-5 shrink-0"
+              >
+                <span class="text-primary-600 font-bold text-2xl">27</span>
+                <span class="text-primary-600 text-sm">July</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-secondary-900 mb-2">
+                  Financial Aid Workshop
+                </h3>
+                <p class="text-secondary-500 mb-3">1:00 PM - 2:00 PM EST</p>
+                <p class="text-secondary-600 mb-4">
+                  Get information about available scholarships, grants, and
+                  financial assistance options.
+                </p>
+                <div class="flex items-center">
+                  <img
+                    src="https://randomuser.me/api/portraits/men/54.jpg"
+                    alt="Instructor"
+                    class="w-10 h-10 rounded-full mr-3"
+                  />
+                  <div>
+                    <p class="font-medium text-secondary-900">Robert Taylor</p>
+                    <p class="text-sm text-secondary-500">
+                      Financial Aid Advisor
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 text-right">
+              <a
+                href="#"
+                class="px-6 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition"
+                >Register Now</a
+              >
+            </div>
+          </div>
+
+          <!-- Event 3 -->
+          <div
+            class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate delay-3"
+          >
+            <div class="flex items-start">
+              <div
+                class="w-20 h-20 bg-primary-100 rounded-lg flex flex-col items-center justify-center mr-5 shrink-0"
+              >
+                <span class="text-primary-600 font-bold text-2xl">30</span>
+                <span class="text-primary-600 text-sm">July</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-secondary-900 mb-2">
+                  Web Development Career Paths
+                </h3>
+                <p class="text-secondary-500 mb-3">2:00 PM - 3:30 PM EST</p>
+                <p class="text-secondary-600 mb-4">
+                  Explore different career paths in web development and the
+                  skills needed for each role.
+                </p>
+                <div class="flex items-center">
+                  <img
+                    src="https://randomuser.me/api/portraits/men/32.jpg"
+                    alt="Instructor"
+                    class="w-10 h-10 rounded-full mr-3"
+                  />
+                  <div>
+                    <p class="font-medium text-secondary-900">David Chen</p>
+                    <p class="text-sm text-secondary-500">Senior Developer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 text-right">
+              <a
+                href="#"
+                class="px-6 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition"
+                >Register Now</a
+              >
+            </div>
+          </div>
+
+          <!-- Event 4 -->
+          <div
+            class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate delay-4"
+          >
+            <div class="flex items-start">
+              <div
+                class="w-20 h-20 bg-primary-100 rounded-lg flex flex-col items-center justify-center mr-5 shrink-0"
+              >
+                <span class="text-primary-600 font-bold text-2xl">2</span>
+                <span class="text-primary-600 text-sm">Aug</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-secondary-900 mb-2">
+                  Language Learning Methods
+                </h3>
+                <p class="text-secondary-500 mb-3">11:00 AM - 12:30 PM EST</p>
+                <p class="text-secondary-600 mb-4">
+                  Discover effective techniques for mastering a new language in
+                  today's digital world.
+                </p>
+                <div class="flex items-center">
+                  <img
+                    src="https://randomuser.me/api/portraits/women/68.jpg"
+                    alt="Instructor"
+                    class="w-10 h-10 rounded-full mr-3"
+                  />
+                  <div>
+                    <p class="font-medium text-secondary-900">Emily Watson</p>
+                    <p class="text-sm text-secondary-500">
+                      Language Specialist
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 text-right">
+              <a
+                href="#"
+                class="px-6 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition"
+                >Register Now</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12 animate delay-4">
+          <a
+            href="#"
+            class="inline-block px-8 py-3 border border-primary-600 text-primary-600 font-semibold rounded-md hover:bg-primary-50 transition duration-300"
+            >View Full Calendar</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 bg-primary-700 text-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 animate">
+            Our Impact in Numbers
+          </h2>
+          <p class="max-w-3xl mx-auto text-primary-100 text-lg animate delay-1">
+            We're proud of the difference we've made in our students'
+            educational journeys.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Stat 1 -->
+          <div class="text-center animate delay-1">
+            <div
+              class="text-4xl md:text-5xl font-bold mb-2 counter"
+              data-target="10000"
+            >
+              0
+            </div>
+            <p class="text-xl text-primary-100">Students Enrolled</p>
+          </div>
+
+          <!-- Stat 2 -->
+          <div class="text-center animate delay-2">
+            <div
+              class="text-4xl md:text-5xl font-bold mb-2 counter"
+              data-target="50"
+            >
+              0
+            </div>
+            <p class="text-xl text-primary-100">Expert Instructors</p>
+          </div>
+
+          <!-- Stat 3 -->
+          <div class="text-center animate delay-3">
+            <div
+              class="text-4xl md:text-5xl font-bold mb-2 counter"
+              data-target="100"
+            >
+              0
+            </div>
+            <p class="text-xl text-primary-100">Courses Available</p>
+          </div>
+
+          <!-- Stat 4 -->
+          <div class="text-center animate delay-4">
+            <div
+              class="text-4xl md:text-5xl font-bold mb-2 counter"
+              data-target="92"
+            >
+              0
+            </div>
+            <p class="text-xl text-primary-100">Success Rate (%)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col lg:flex-row gap-12">
+          <div class="lg:w-2/5 animate">
+            <div
+              class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium mb-4"
+            >
+              Get In Touch
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-6">
+              Contact Us
+            </h2>
+            <p class="text-secondary-600 mb-8">
+              Have questions about our courses or need more information? Our
+              team is here to help you.
+            </p>
+
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div
+                  class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mr-4 shrink-0"
+                >
+                  <i class="fas fa-map-marker-alt text-primary-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-secondary-900 mb-1">
+                    Our Location
+                  </h4>
+                  <p class="text-secondary-600">
+                    123 Education Avenue, Tech City, CA 90210
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div
+                  class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mr-4 shrink-0"
+                >
+                  <i class="fas fa-envelope text-primary-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-secondary-900 mb-1">
+                    Email Us
+                  </h4>
+                  <p class="text-secondary-600">info@horizoneducation.com</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div
+                  class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mr-4 shrink-0"
+                >
+                  <i class="fas fa-phone text-primary-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-secondary-900 mb-1">Call Us</h4>
+                  <p class="text-secondary-600">(123) 456-7890</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div
+                  class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mr-4 shrink-0"
+                >
+                  <i class="fas fa-clock text-primary-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-secondary-900 mb-1">
+                    Office Hours
+                  </h4>
+                  <p class="text-secondary-600">
+                    Monday - Friday: 9:00 AM - 5:00 PM
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <h4 class="font-semibold text-secondary-900 mb-4">
+                Connect With Us
+              </h4>
+              <div class="flex space-x-4">
+                <a
+                  href="#"
+                  class="w-10 h-10 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center hover:bg-primary-600 hover:text-white transition"
+                >
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-10 h-10 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center hover:bg-primary-600 hover:text-white transition"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-10 h-10 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center hover:bg-primary-600 hover:text-white transition"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-10 h-10 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center hover:bg-primary-600 hover:text-white transition"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-10 h-10 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center hover:bg-primary-600 hover:text-white transition"
+                >
+                  <i class="fab fa-youtube"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:w-3/5 animate delay-2">
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+              <h3 class="text-2xl font-bold text-secondary-900 mb-6">
+                Send us a Message
+              </h3>
+              <form>
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label
+                      for="name"
+                      class="block text-sm font-medium text-secondary-700 mb-2"
+                      >Full Name</label
+                    >
+                    <input
+                      type="text"
+                      id="name"
+                      class="w-full px-4 py-3 border border-secondary-300 rounded-md input-focus focus:outline-none"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="email"
+                      class="block text-sm font-medium text-secondary-700 mb-2"
+                      >Email Address</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      class="w-full px-4 py-3 border border-secondary-300 rounded-md input-focus focus:outline-none"
+                      placeholder="Your email"
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-6">
+                  <label
+                    for="subject"
+                    class="block text-sm font-medium text-secondary-700 mb-2"
+                    >Subject</label
+                  >
+                  <input
+                    type="text"
+                    id="subject"
+                    class="w-full px-4 py-3 border border-secondary-300 rounded-md input-focus focus:outline-none"
+                    placeholder="Message subject"
+                  />
+                </div>
+
+                <div class="mb-6">
+                  <label
+                    for="message"
+                    class="block text-sm font-medium text-secondary-700 mb-2"
+                    >Message</label
+                  >
+                  <textarea
+                    id="message"
+                    rows="5"
+                    class="w-full px-4 py-3 border border-secondary-300 rounded-md input-focus focus:outline-none"
+                    placeholder="Your message"
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full py-3 bg-primary-600 text-white font-semibold rounded-md hover:bg-primary-700 transition duration-300 animated-btn"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-primary-600 text-white">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col lg:flex-row items-center justify-between">
+          <div class="mb-8 lg:mb-0 lg:mr-8 animate">
+            <h2 class="text-2xl md:text-3xl font-bold mb-3">
+              Subscribe to Our Newsletter
+            </h2>
+            <p class="text-primary-100">
+              Get the latest updates on courses, events, and educational
+              resources.
+            </p>
+          </div>
+          <div class="lg:w-1/2 animate delay-2">
+            <form class="flex flex-col sm:flex-row space-y-4 sm:space-y-0">
+              <input
+                type="email"
+                placeholder="Your email address"
+                class="px-4 py-3 rounded-l-md sm:rounded-r-none w-full focus:outline-none text-secondary-800"
+              />
+              <button
+                type="submit"
+                class="px-6 py-3 bg-white text-primary-600 font-semibold rounded-r-md sm:rounded-l-none hover:bg-primary-50 transition duration-300"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-900 text-white pt-16 pb-8">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <!-- Company Info -->
+          <div class="animate">
+            <a href="#" class="flex items-center space-x-3 mb-6">
+              <div
+                class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center"
+              >
+                <span class="text-white text-xl font-bold">H</span>
+              </div>
+              <span class="text-2xl font-bold text-white">Horizon</span>
+            </a>
+            <p class="text-secondary-300 mb-6">
+              Transforming education through innovation and personalized
+              learning experiences for students worldwide.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 bg-secondary-800 text-white rounded-full flex items-center justify-center hover:bg-primary-600 transition"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-secondary-800 text-white rounded-full flex items-center justify-center hover:bg-primary-600 transition"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-secondary-800 text-white rounded-full flex items-center justify-center hover:bg-primary-600 transition"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-secondary-800 text-white rounded-full flex items-center justify-center hover:bg-primary-600 transition"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="animate delay-1">
+            <h4 class="text-lg font-semibold mb-6">Quick Links</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#home"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-secondary-300 hover:text-white transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#courses"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Courses</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#blog"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Blog</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#schedule"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Schedule</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div class="animate delay-2">
+            <h4 class="text-lg font-semibold mb-6">Resources</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Student Portal</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Course Calendar</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Scholarships</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Career Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-secondary-300 hover:text-white transition"
+                  >FAQ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-secondary-300 hover:text-white transition"
+                  >Help & Support</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="animate delay-3">
+            <h4 class="text-lg font-semibold mb-6">Contact Info</h4>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt text-primary-500 mt-1 mr-3"></i>
+                <span class="text-secondary-300"
+                  >123 Education Avenue, Tech City, CA 90210</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-envelope text-primary-500 mt-1 mr-3"></i>
+                <span class="text-secondary-300"
+                  >info@horizoneducation.com</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-phone text-primary-500 mt-1 mr-3"></i>
+                <span class="text-secondary-300">(123) 456-7890</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-clock text-primary-500 mt-1 mr-3"></i>
+                <span class="text-secondary-300"
+                  >Mon-Fri: 9:00 AM - 5:00 PM</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-secondary-800 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-secondary-400 text-sm mb-4 md:mb-0">
+            &copy; 2025 Horizon Education. All rights reserved.
+          </p>
+          <div class="flex space-x-6">
+            <a
+              href="#"
+              class="text-secondary-400 hover:text-white text-sm transition"
+              >Privacy Policy</a
+            >
+            <a
+              href="#"
+              class="text-secondary-400 hover:text-white text-sm transition"
+              >Terms of Service</a
+            >
+            <a
+              href="#"
+              class="text-secondary-400 hover:text-white text-sm transition"
+              >Cookie Policy</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./js/main_script.js"></script>
+  </body>
 </html>
